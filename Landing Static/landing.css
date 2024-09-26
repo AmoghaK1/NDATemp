@@ -3,3 +3,22 @@
     padding: 0;
 }
 
+.navbar {
+    background-color: #060C27;
+    
+}
+.navbar-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-logo-img>img {
+    height: 150px;
+    width: 100%;
+}
+
+.navbar-logo-text {
+    margin-left: 1.5rem;
+}
+
