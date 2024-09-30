@@ -1,0 +1,24 @@
+.logo{
+    margin-top: 7rem;
+    margin-left : 3rem;
+    height: 289px;
+    width: 196px;
+    
+}
+
+.logo_img{
+    
+}
+
+.logo-txt{
+    margin-left : 6rem;
+    font-size: 2rem;
+    font-style: italic;
+}
+
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    width: 1089px;
+    height: 519px;
+}
