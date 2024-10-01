@@ -1,24 +1,92 @@
-.logo{
-    margin-top: 7rem;
-    margin-left : 3rem;
-    height: 289px;
-    width: 196px;
-    
-}
-
-.logo_img{
-    
-}
-
-.logo-txt{
-    margin-left : 6rem;
-    font-size: 2rem;
-    font-style: italic;
-}
-
-.card{
+.hero-section{
     display: flex;
-    flex-wrap: wrap;
-    width: 1089px;
-    height: 519px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.logo-img{
+    margin-right: 8rem;
+}
+.logo-txt{
+    text-align: center;
+    margin-right: 8rem;
+
+}
+.img{
+    height : 20rem;
+    width: 100%;
+    
+}
+
+.card-txt{
+    text-align: center;
+    color: #000;
+    font-family: JejuMyeongjo;
+    font-size: 39px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 47px; /* 97.917% */
+}
+
+.main-card{
+    height: 100%;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card-contents{
+    height: 500px;
+    border-radius: 30px;
+    background: linear-gradient(0deg, #E2D1C3 0%, #E2D1C3 100%);
+    box-shadow: 10px 16px 13.4px 4px rgba(0, 0, 0, 0.25);
+   display:grid;
+   align-items: center;
+}
+
+
+.email{
+    height: 60px;
+    width: 80%;
+    background-color: #F8F8F8;
+    stroke-width: 1px;
+    stroke: #000;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin-left: 5rem;
+    color: #949292;
+    font-family: Finlandica;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 47px; /* 146.875% */
+}
+
+.password{
+    height: 60px;
+    width: 80%;
+    background-color: #F8F8F8;
+    stroke-width: 1px;
+    stroke: #000;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin-left: 5rem;
+    color: #949292;
+    font-family: Finlandica;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 47px; /* 146.875% */
+}
+
+.sign-up{
+    text-align: center;
+    margin-top: 3rem;
+    font-family: Finlandica;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 47px;
+    text-decoration-line: underline;
 }
