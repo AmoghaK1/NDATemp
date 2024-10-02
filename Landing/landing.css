@@ -8,4 +8,44 @@ body {
     width: 100%;
     background: linear-gradient(#E2D1C3 0%, #FDFCFB 100%);
 }
+.navbar {
+    background-color: #060C27;
+   
+   
+}
 
+    
+
+.logo {
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+    
+}
+.logo-img>img {
+    height: 6rem;
+    width: auto;
+}
+
+.logo-txt {
+    margin-left: 1.4rem;
+}
+.logo-txt #txt1 {
+    margin-bottom: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.4rem;
+    color: #E6B206;
+    
+} 
+
+.logo-txt #txt2 {
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(227, 227, 227);
+}
+
+.btn {
+    background-color: white!important;
+    
+   
+}
