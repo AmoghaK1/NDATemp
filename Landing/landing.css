@@ -9,26 +9,3 @@ body {
     background: linear-gradient(#E2D1C3 0%, #FDFCFB 100%);
 }
 
-.navbar {
-    background-color: #060C27;
-}
-.navbar-brand {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar-logo-img>img {
-    height: 150px;
-    width: 100%;
-}
-
-.navbar-logo-text {
-    margin-left: 1.5rem;
-}
-
-.navbar-logo-text .txt1 {
-    color: #E6B206;
-    font-family: Georgia;
-    font-size: 27px;
-}
