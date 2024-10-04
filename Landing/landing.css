@@ -5,41 +5,42 @@
 
 body {
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     background: linear-gradient(#E2D1C3 0%, #FDFCFB 100%);
 }
 .navbar {
     background-color: #060C27;
-   
+    
    
 }
 
-    
+
 
 .logo {
     display: flex!important;
-    justify-content: center;
     align-items: center;
-    
+    position: relative;
+    align-self: flex-start;
 }
 .logo-img>img {
-    height: 6rem;
+    height: 7rem;
     width: auto;
+    margin-right: 0;
 }
 
 .logo-txt {
-    margin-left: 1.4rem;
+    
 }
 .logo-txt #txt1 {
     margin-bottom: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     color: #E6B206;
     
 } 
 
 .logo-txt #txt2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: 'Times New Roman', Times, serif;
     color: rgb(227, 227, 227);
 }
