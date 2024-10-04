@@ -10,17 +10,16 @@ body {
 }
 .navbar {
     background-color: #060C27;
-    
-   
-}
+    }
 
 
 
 .logo {
     display: flex!important;
     align-items: center;
-    position: relative;
-    align-self: flex-start;
+    justify-content: center;
+    margin-left: 2rem;
+
 }
 .logo-img>img {
     height: 7rem;
@@ -29,7 +28,7 @@ body {
 }
 
 .logo-txt {
-    
+   margin-left: 1.2rem; 
 }
 .logo-txt #txt1 {
     margin-bottom: 0;
@@ -45,8 +44,57 @@ body {
     color: rgb(227, 227, 227);
 }
 
-.btn {
-    background-color: white!important;
+.login-btn {
+    background-color: #4d4c4a!important;
+    margin-right: 3rem;
+    width: 8rem;
+    border-radius: 100px!important;
+    color: white!important;
+}
+
+@media (max-width: 768px) {
+    .logo-img img {
+        height: 5.5rem; /* Smaller height for the logo */
+    }
+
+    .logo-txt #txt1 {
+        font-size: 1.4rem; /* Smaller text size */
+    }
+
+    .logo-txt #txt2 {
+        font-size: 1.1rem; /* Adjusting subtitle text size */
+    }
+
+    .login-btn {
+        width: 5.5rem; /* Smaller width for the login button */
+        margin-right: 1rem; /* Less margin on smaller screens */
+        
+    }
+}
+
+/* Media queries for devices with a max width of 480px (mobile devices) */
+@media (max-width: 480px) {
+    .logo {
+        margin-left: 1rem;
+    }
     
-   
+    .logo-img img {
+        height: 4.7rem; /* Further reduced logo height for mobile */
+    }
+
+    .logo-txt #txt1 {
+        font-size: 1.3rem; /* Further reduced text size */
+    }
+
+    .logo-txt #txt2 {
+        font-size: 0.98rem; /* Adjusted for mobile */
+    }
+
+    .login-btn {
+        width: 5rem; /* Smaller button for mobile */
+        margin-right: 1.2rem;
+        height: 2rem;
+        font-size: 13px!important;
+        color: white!important;
+    }
 }
