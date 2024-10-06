@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #2ca32c;
+    background-color: #001e4e;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -17,9 +17,10 @@ h1 {
     font-size: 90px;
     white-space: nowrap;
     overflow: hidden;
-    animation: typewriter 4s steps(24) infinite alternate,
-        blink 800ms steps(24) infinite normal;
-    border-right: 5px solid black;
+    animation: typewriter 4s steps(22) infinite alternate,
+        blink 800ms steps(22) infinite normal;
+    border-right: 5px solid rgb(216, 216, 216);
+    color: rgb(130, 130, 130);
 }
 
 @keyframes typewriter {
@@ -28,7 +29,7 @@ h1 {
     }
 
     to {
-        width: 50%;
+        width: 68%;
     }
 }
 
