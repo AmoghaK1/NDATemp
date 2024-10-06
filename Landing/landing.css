@@ -22,7 +22,7 @@ body {
 
 }
 .logo-img>img {
-    height: 7rem;
+    height: 6rem;
     width: auto;
     margin-right: 0;
 }
@@ -35,10 +35,14 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.7rem;
     color: #E6B206;
+    margin-top: 1rem;
+    font-variant: small-caps;
+    font-stretch: extra-expanded;
     
 } 
 
 .logo-txt #txt2 {
+    margin-top: 0;
     font-size: 1.2rem;
     font-family: 'Times New Roman', Times, serif;
     color: rgb(227, 227, 227);
@@ -46,12 +50,29 @@ body {
 
 .login-btn {
     background-color: #4d4c4a!important;
-    margin-right: 3rem;
+    margin-right: 6rem;
     width: 8rem;
     border-radius: 100px!important;
     color: white!important;
+   
+    
 }
 
+@media (min-width: 769px) {
+    .login-btn {
+        box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.25); border-radius: 40px; backdrop-filter: blur(4px);
+        transition: all 2s ease-in-out;
+    }
+    .login-btn:hover {
+        transform: scale(1.1);
+        backdrop-filter: blur(4px);
+        background: linear-gradient(45deg, white 0%, grey 100%);
+        box-shadow: 4px 4px 30px #ffce0ab3;
+        color:#4d4c4a!important;
+       
+    } 
+    
+}
 @media (max-width: 768px) {
     .logo-img img {
         height: 5.5rem; /* Smaller height for the logo */
@@ -92,7 +113,7 @@ body {
 
     .login-btn {
         width: 5rem; /* Smaller button for mobile */
-        margin-right: 1.2rem;
+        margin-right: 2rem;
         height: 2rem;
         font-size: 13px!important;
         color: white!important;
@@ -103,7 +124,7 @@ body {
 /* SHLOK SECTION */
 
 .shlok-section {
-    margin: 3rem 2rem;
+    margin: 5rem 2.5rem;
     height: 60vh;
     width: 70vw;
    
@@ -111,10 +132,11 @@ body {
 
 .line {
     opacity: 0;
-    margin: 18px 0;
-    font-size: 3rem;
+    margin: 2rem 0;
+    font-size: 2.5rem;
     animation: fadeIn 1.2s forwards;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
 }
 
 .line1 {
@@ -144,8 +166,8 @@ body {
 
 @media (max-width: 768px) {
     .line {
-        margin: 10px;
-        font-size: 2rem;
+        margin: 2rem;
+        font-size: 2.2rem;
 
     }
 }
@@ -154,10 +176,11 @@ body {
 @media (max-width: 480px) {
     .shlok-section {
         width: auto;
+        margin-left: 1rem;
     }
     .line {
-        margin: 15px 0px;
-        font-size: 1.7rem;
-        
+        margin: 2rem 0px;
+        font-size: 1.5rem;
     }
 }
+
