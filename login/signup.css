@@ -29,7 +29,7 @@ body{
 }
 
 /*login card*/
-.login-card{
+.signup-card{
     height: 50vh;
     width: 50vw;
     border-radius: 30px;
@@ -37,6 +37,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid black;
 }
 
 .header-txt{
@@ -46,17 +47,6 @@ body{
     margin-bottom: 40px;
 }
 
-.signup{
-    text-align: center;
-    font-family: finlandica;
-    font-size: 1.2rem;
-    margin-top: 30px;
-}
-
-.signup a{
-    color: #0000EE!important;
-    text-decoration: underline !important;
-}
 
 /*inside form*/
 .type-box{
@@ -77,13 +67,13 @@ button{
     font-family: inherit;
 }
 
-button.login{
+button.signup{
     width: 10rem;
     height: auto;
     margin-top: 8px;
 }
 
-button.login .circle{
+button.signup .circle{
     transition: all 0.45s cubic-bezier(0.075, 0.82, 0.165, 1);
     position: relative;
     display: block;
@@ -94,7 +84,7 @@ button.login .circle{
     border-radius: 1.25rem;
 }
 
-button.login .circle.icon{
+button.signup .circle.icon{
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
     top: 0;
@@ -103,7 +93,7 @@ button.login .circle.icon{
     background: #fff;
 }
 
-button.login .circle .icon.arrow {
+button.signup .circle .icon.arrow {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     left: 0.5rem;   /* Slightly reduced */
     width: 0.9rem;  /* Reduced width */
@@ -111,7 +101,7 @@ button.login .circle .icon.arrow {
     background: none;
 }
 
-button.login .circle .icon.arrow::before {
+button.signup .circle .icon.arrow::before {
     position: absolute;
     content: "";
     top: 1.05rem;  /* Adjusted for smaller arrow */
@@ -123,7 +113,7 @@ button.login .circle .icon.arrow::before {
     transform: rotate(45deg);
 }
 
-button.login .button-text {
+button.signup .button-text {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
     top: 0;
