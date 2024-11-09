@@ -23,7 +23,7 @@
             width: 100%;
             max-width: 1200px;
             margin: auto;
-            padding: 20px;
+            padding: 0px 20px 20px 20px;
             gap: 40px;
         }
 
@@ -34,7 +34,7 @@
             align-items: center;
             justify-content: center;
             background: linear-gradient(45deg, #4a154b, #7e22ce);
-            border-radius: 20px;
+            border-radius: 0px 0px 20px 20px;
             padding: 40px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(126, 34, 206, 0.2);
@@ -177,9 +177,9 @@
         .forgot-password {
             color: #7e22ce;
             text-decoration: none;
-            transition: all 0.3s ease;
             font-size: 0.9rem;
             font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .forgot-password:hover {
@@ -231,21 +231,42 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                background: #f5f7fa;
+            }
+
             .login-container {
                 flex-direction: column;
+                padding: 0px 0px ;
+                gap: 0;
             }
             
             .welcome-section {
-                padding: 30px 20px;
-            }
-
-            .welcome-content h1 {
-                font-size: 1.8rem;
+                height: auto;
+                padding: 0px 0px 20px 20px;
+                border-radius: 0 0 20px 20px;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 20px;
             }
 
             .logo {
-                width: 120px;
-                height: 150px;
+                width: 60px;
+                height: 80px;
+                margin-bottom: 0;
+            }
+
+            .welcome-content {
+                text-align: left;
+            }
+
+            .welcome-content h1 {
+                font-size: 1.4rem;
+                margin-bottom: 5px;
+            }
+
+            .welcome-content p {
+                font-size: 0.9rem;
             }
 
             .form-section {
@@ -253,15 +274,77 @@
             }
 
             .login-form {
-                padding: 30px 20px;
+                padding: 20px;
+                border-radius: 20px;
+                margin-top: 20px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+
+            input, button {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .remember-forgot {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .forgot-password {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-section {
+                padding: 15px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 70px;
+            }
+
+            .welcome-content h1 {
+                font-size: 1.2rem;
+            }
+
+            .welcome-content p {
+                font-size: 0.8rem;
+            }
+
+            .form-section {
+                padding: 15px;
+            }
+
+            .login-form {
+                padding: 15px;
+            }
+
+            .remember-forgot {
+                margin-bottom: 15px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Rest of your HTML remains the same -->
     <div class="login-container">
         <div class="welcome-section">
-            <img src="D:\GIT\NDATemp\Photos\natraj-logo.png" alt="Nrutyashree Dance Academy Logo" class="logo">
+            <img src="G:\PROGRAMMING\NDA\Photos\natraj-logo.png" alt="Nrutyashree Dance Academy Logo" class="logo">
             <div class="welcome-content">
                 <h1>Welcome to<br>Nrutyashree Dance Academy!</h1>
                 <p>Discover the art of classical dance</p>
