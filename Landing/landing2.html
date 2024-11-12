@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nrutyashree Dance Academy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #C41E3A; /* Rich Indian Red */
+            --secondary-color: #1A0F0F; /* Deep Brown */
+            --accent-gold: #FFD700; /* Gold */
+            --accent-light: #FFF5E6; /* Light Cream */
+            --text-color: #2D2D2D;
+            --gradient-start: #FFF5E6;
+            --gradient-end: #FFE6CC;
+        }
+
+        body {
+            background-color: var(--accent-light);
+            overflow-x: hidden;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 0.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .logo-txt {
+            color: var(--secondary-color);
+        }
+
+        .logo-txt h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-txt p {
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .login-btn {
+            background: linear-gradient(45deg, var(--primary-color), #E63946);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-links .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
+        }
+
+        .nav-links .login-btn::after {
+            display: none;
+        }
+
+        .hero-section {
+            margin-top: 100px;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/800/600') no-repeat right center;
+            opacity: 0.1;
+            background-size: contain;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .shlok-section {
+            background: linear-gradient(135deg, var(--secondary-color), #2C1810);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shlok-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/100/100') repeat;
+            opacity: 0.05;
+        }
+
+        .shlok-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .shlok-text {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .shlok-translation {
+            color: #FFA182;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .features-section {
+            padding: 6rem 2rem;
+            background-color: white;
+            position: relative;
+        }
+
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            padding: 1rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(196, 30, 58, 0.1);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature-card i {
+            color: var(--accent-gold);
+        }
+
+        .feature-card p {
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE6CC 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .primary-btn {
+            background: linear-gradient(45deg, var(--primary-color), #E63946);
+            color: white;
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.2);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero-content h2 {
+                font-size: 3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.5s;
+                padding: 2rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .shlok-text {
+                font-size: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-card {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .logo-txt h1 {
+                font-size: 1.5rem;
+            }
+
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo-section">
+                <img src="D:\GIT\NDATemp\Photos\natraj-logo.png" alt="Nrutyashree Logo" class="logo-img">
+                <div class="logo-txt">
+                    <h1>Nrutyashree</h1>
+                    <p>Dance Academy</p>
+                </div>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#courses">Courses</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+                <a href="login.html" class="login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>Discover the Divine Art of Bharatanatyam</h2>
+            <p>Experience the grace, rhythm, and spirituality of classical Indian dance at Nrutyashree Dance Academy</p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="cta-btn primary-btn">Begin Your Journey</a>
+                <a href="#courses" class="cta-btn secondary-btn">Explore Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="shlok-section">
+        <div class="shlok-content">
+            <div class="shlok-text">
+                तस्मै नमः परमकारणकारणाय<br>
+                दीप्तोज्ज्वलज्ज्वलितपिङ्गललोचनाय।<br>
+                नागेन्द्रहारकृतकुण्डलभूषणाय<br>
+                ब्रह्मेन्द्रविष्णुवरदाय नमः शिवाय ॥
+            </div>
+            <div class="shlok-translation">
+                Salutations to Lord Shiva, the cause of all causes, with bright and radiant eyes,<br>
+                adorned with serpent king and earrings, the bestower of boons to Brahma, Indra and Vishnu.
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3><i class="fas fa-star"></i>Expert Guidance</h3>
+                <p>Learn from experienced gurus who preserve and pass on the authentic traditions of Bharatanatyam, ensuring you receive the highest quality of classical dance education.</p>
+            </div>
+            <div class="feature-card">
+                <h3><i class="fas fa-graduation-cap"></i>Structured Learning</h3>
+                <p>Progress through carefully designed courses from Prarambik to Nritya Visharad levels, with personalized attention at every step of your journey.</p>
+            </div>
+            <div class="feature-card">
+                <h3><i class="fas fa-om"></i>Cultural Immersion</h3>
+                <p>Immerse yourself in the rich heritage and spirituality of Indian classical dance, understanding the deep cultural significance behind every movement.</p>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nritya Sangam Academy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadeUp {
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+        
+        .bg-gradient {
+            background: linear-gradient(135deg, #2D3047 0%, #1B1B3A 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, #FF6B6B 0%, #FFE66D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .sanskrit-text {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body class="bg-gradient text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-opacity-90 bg-gray-900 backdrop-filter backdrop-blur-lg z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="D:\GIT\NDATemp\Photos\natraj-logo.png" alt="Logo" class="w-10 h-10 rounded-full">
+                <span class="text-2xl font-bold text-gradient">Nrutyashree Dance Academy</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-pink-400 transition-colors">About</a>
+                <a href="#courses" class="hover:text-pink-400 transition-colors">Courses</a>
+                <a href="#gallery" class="hover:text-pink-400 transition-colors">Gallery</a>
+                <a href="#contact" class="hover:text-pink-400 transition-colors">Contact</a>
+                <a href="#login" class="px-6 py-2 bg-pink-500 rounded-full hover:bg-pink-600 transition-colors">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="container mx-auto text-center animate-fadeUp">
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 text-gradient">
+                Where Rhythm Meets Devotion
+            </h1>
+            <p class="text-xl md:text-2xl mb-12 text-gray-300 max-w-3xl mx-auto">
+                Experience the divine confluence of movement, music, and mythology through the ancient art of Bharatanatyam
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="#enroll" class="px-8 py-4 bg-pink-500 rounded-full hover:bg-pink-600 transition-colors text-lg font-semibold">
+                    Begin Your Journey
+                </a>
+                <a href="#learn-more" class="px-8 py-4 border-2 border-pink-500 rounded-full hover:bg-pink-500 transition-colors text-lg font-semibold">
+                    Explore More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gradient">Our Sacred Offerings</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="bg-gray-800 p-8 rounded-2xl card-hover">
+                    <h3 class="text-2xl font-bold mb-4 text-pink-400">Traditional Excellence</h3>
+                    <p class="text-gray-300">
+                        Learn authentic Bharatanatyam from masters who carry forward a legacy spanning generations
+                    </p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-2xl card-hover">
+                    <h3 class="text-2xl font-bold mb-4 text-pink-400">Holistic Development</h3>
+                    <p class="text-gray-300">
+                        Develop not just as a dancer, but as an artist who understands the depth of Indian classical arts
+                    </p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-2xl card-hover">
+                    <h3 class="text-2xl font-bold mb-4 text-pink-400">Divine Connection</h3>
+                    <p class="text-gray-300">
+                        Connect with the divine through the sacred art of dance and experience spiritual transformation
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sanskrit Verse Section -->
+    <section class="py-20 px-6 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto text-center">
+            <div class="max-w-3xl mx-auto">
+                <div class="sanskrit-text text-2xl mb-6 text-yellow-300">
+                    यत्र हस्तस्तत्र नेत्रं
+                    यत्र नेत्रं तत्र मनः।
+                    यत्र मनस्तत्र भावो
+                    यत्र भावस्तत्र रसः॥
+                </div>
+                <p class="text-lg text-gray-300 italic">
+                    "Where the hand goes, the eyes follow;
+                    Where the eyes go, the mind follows;
+                    Where the mind goes, there the mood follows;
+                    Where the mood goes, there the rasa (artistic flavor) is born."
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

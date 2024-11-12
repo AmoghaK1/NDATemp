@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nrutyashree Dance Academy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes gentleFade {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animate-gentle {
+            animation: gentleFade 1.2s ease-out forwards;
+        }
+        
+        .bg-soft {
+            background: linear-gradient(135deg, #FDF8F5 0%, #F8EEE7 100%);
+        }
+        
+        .accent-gradient {
+            background: linear-gradient(90deg, #C06C84 0%, #6C5B7B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .border-flow {
+            background: linear-gradient(90deg, #C06C84, #6C5B7B, #C06C84);
+            background-size: 200% 100%;
+            animation: borderFlow 3s infinite;
+        }
+        
+        .card-elegant {
+            transition: all 0.4s ease;
+            border: 1px solid rgba(192, 108, 132, 0.1);
+        }
+        
+        .card-elegant:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(192, 108, 132, 0.1);
+            border-color: rgba(192, 108, 132, 0.3);
+        }
+
+        .decorative-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #C06C84, transparent);
+        }
+    </style>
+</head>
+<body class="bg-soft text-gray-700">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-sm z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="D:\GIT\NDATemp\Photos\natraj-logo.png" alt="Logo" class="w-10 h-10 rounded-full">
+                <span class="text-2xl font-serif accent-gradient">Nrutyashree Dance Academy</span>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="hover:text-purple-600 transition-colors">About</a>
+                <a href="#courses" class="hover:text-purple-600 transition-colors">Courses</a>
+                <a href="#gallery" class="hover:text-purple-600 transition-colors">Gallery</a>
+                <a href="#contact" class="hover:text-purple-600 transition-colors">Contact</a>
+                <a href="#login" class="px-6 py-2 border border-purple-600 rounded-lg hover:bg-purple-600 hover:text-white transition-all">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center relative">
+        <div class="absolute inset-0 bg-white bg-opacity-90"></div>
+        <div class="container mx-auto text-center relative animate-gentle">
+            <h1 class="text-5xl md:text-7xl font-serif mb-8 accent-gradient">
+                Embrace the Classical Grace
+            </h1>
+            <div class="w-24 h-0.5 mx-auto mb-8 decorative-line"></div>
+            <p class="text-xl md:text-2xl mb-12 text-gray-600 max-w-3xl mx-auto font-light">
+                Where tradition meets elegance, and movement becomes poetry. 
+                Discover the timeless art of Bharatanatyam in its purest form.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="#enroll" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-lg hover:opacity-90 transition-opacity text-lg">
+                    Begin Your Journey
+                </a>
+                <a href="#learn-more" class="px-8 py-4 border border-purple-600 rounded-lg hover:bg-purple-600 hover:text-white transition-all text-lg">
+                    Discover More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-24 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-serif text-center mb-4 accent-gradient">The Art of Perfection</h2>
+            <div class="w-24 h-0.5 mx-auto mb-16 decorative-line"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="bg-white p-10 rounded-lg card-elegant">
+                    <h3 class="text-2xl font-serif mb-4 text-purple-600">Artistic Heritage</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Immerse yourself in centuries-old traditions, preserved and passed down through generations of master practitioners.
+                    </p>
+                </div>
+                <div class="bg-white p-10 rounded-lg card-elegant">
+                    <h3 class="text-2xl font-serif mb-4 text-purple-600">Personal Growth</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Develop grace, discipline, and spiritual awareness through the transformative journey of classical dance.
+                    </p>
+                </div>
+                <div class="bg-white p-10 rounded-lg card-elegant">
+                    <h3 class="text-2xl font-serif mb-4 text-purple-600">Artistic Excellence</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Master the intricate techniques and expressions under the guidance of accomplished artists.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sanskrit Quote Section -->
+    <section class="py-20 px-6 bg-white">
+        <div class="container mx-auto text-center">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-2xl mb-6 text-purple-600 font-serif italic">
+                    नृत्तं भावविहीनं तु नृत्यं भावरसान्वितम्।
+                    नाट्यं रसभावाभ्यां संयुक्तं लोकरञ्जनम्॥
+                </div>
+                <div class="w-24 h-0.5 mx-auto my-8 decorative-line"></div>
+                <p class="text-lg text-gray-600 font-light">
+                    "Pure dance is without emotion,
+                    Dance with emotion becomes expression,
+                    And when combined with dramatic elements,
+                    It becomes the enchanter of worlds."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 px-6 bg-gradient-to-r from-purple-50 to-pink-50">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-serif mb-8 accent-gradient">Begin Your Artistic Journey</h2>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                Join our community of dedicated artists and embark on a transformative journey through classical dance.
+            </p>
+            <a href="#enroll" class="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-lg hover:opacity-90 transition-opacity">
+                Enroll Now
+            </a>
+        </div>
+    </section>
+</body>
+</html>

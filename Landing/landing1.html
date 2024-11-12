@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nrutyashree Dance Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #FF6B4A;
+            --secondary-color: #4A1500;
+            --accent-color: #FFF1E6;
+            --text-color: #2D2D2D;
+        }
+
+        body {
+            background-color: var(--accent-color);
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-txt {
+            color: var(--secondary-color);
+        }
+
+        .logo-txt h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-txt p {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links .login-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+        }
+
+        .nav-links .login-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .hero-section {
+            margin-top: 100px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #FFF1E6 0%, #FFE4D6 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .shlok-section {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .shlok-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .shlok-text {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .shlok-translation {
+            color: #FFA182;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .features-section {
+            padding: 4rem 2rem;
+            background-color: white;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #FFE4D6 0%, #FFF1E6 100%);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .primary-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links a {
+                display: none;
+            }
+
+            .nav-links .login-btn {
+                display: inline-block;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .shlok-text {
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo-section">
+                <div class="logo-img">
+                    <span style="font-size: 24px; color: var(--primary-color);">न</span>
+                </div>
+                <div class="logo-txt">
+                    <h1>Nrutyashree</h1>
+                    <p>Dance Academy</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#courses">Courses</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+                <a href="login.html" class="login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>Discover the Divine Art of Bharatanatyam</h2>
+            <p>Experience the grace, rhythm, and spirituality of classical Indian dance at Nrutyashree Dance Academy</p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="cta-btn primary-btn">Begin Your Journey</a>
+                <a href="#courses" class="cta-btn secondary-btn">Explore Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="shlok-section">
+        <div class="shlok-content">
+            <div class="shlok-text">
+                तस्मै नमः परमकारणकारणाय<br>
+                दीप्तोज्ज्वलज्ज्वलितपिङ्गललोचनाय।<br>
+                नागेन्द्रहारकृतकुण्डलभूषणाय<br>
+                ब्रह्मेन्द्रविष्णुवरदाय नमः शिवाय ॥
+            </div>
+            <div class="shlok-translation">
+                Salutations to Lord Shiva, the cause of all causes, with bright and radiant eyes,<br>
+                adorned with serpent king and earrings, the bestower of boons to Brahma, Indra and Vishnu.
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Expert Guidance</h3>
+                <p>Learn from experienced gurus who preserve and pass on the authentic traditions of Bharatanatyam.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Structured Learning</h3>
+                <p>Progress through carefully designed courses from Prarambik to Nritya Visharad levels.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Cultural Immersion</h3>
+                <p>Immerse yourself in the rich heritage and spirituality of Indian classical dance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="hero-content">
+            <h2>Start Your Dance Journey Today</h2>
+            <p>Join our community of passionate dancers and begin your transformation</p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="cta-btn primary-btn">Enroll Now</a>
+                <a href="#contact" class="cta-btn secondary-btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
