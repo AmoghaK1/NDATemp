@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      margin-bottom: 2rem;
+    }
+
+    .tab {
+      padding: 1rem 2rem;
+      background-color: #f1f1f1;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      color: #333;
+    }
+
+    .tab.active {
+      background-color: #a27a7a;
+      color: white;
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 2rem;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    .card h2 {
+      color: #a27a7a;
+      margin-top: 0;
+    }
+
+    /* Attendance */
+    .attendance-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .attendance-table th,
+    .attendance-table td {
+      padding: 0.5rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .attendance-table .present {
+      color: green;
+    }
+
+    .attendance-table .absent {
+      color: red;
+    }
+
+    /* Course Status */
+    .progress-bar {
+      width: 100%;
+      height: 20px;
+      background-color: #f1f1f1;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+
+    .progress {
+      height: 100%;
+      background-color: #a27a7a;
+      width: 85%;
+      border-radius: 4px;
+    }
+
+    /* Accounts */
+    .accounts-info {
+      margin-bottom: 2rem;
+    }
+
+    .accounts-chart {
+      width: 100%;
+      height: 300px;
+      background-color: #f1f1f1;
+      border-radius: 8px;
+    }
+
+    /* Events */
+    .events-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .events-list li {
+      margin-bottom: 1rem;
+    }
+
+    /* Certificates */
+    .certificates-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .certificates-table th,
+    .certificates-table td {
+      padding: 0.5rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Dashboard</h1>
+
+    <div class="tabs">
+      <button class="tab active">Attendance</button>
+      <button class="tab">Course Status</button>
+      <button class="tab">Accounts</button>
+      <button class="tab">Events</button>
+      <button class="tab">Certificates</button>
+    </div>
+
+    <div class="tab-content">
+      <!-- Attendance -->
+      <div class="card">
+        <h2>Attendance</h2>
+        <table class="attendance-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Attendance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2023-01-01</td>
+              <td class="present">Present</td>
+            </tr>
+            <tr>
+              <td>2023-01-02</td>
+              <td class="absent">Absent</td>
+            </tr>
+            <tr>
+              <td>2023-01-03</td>
+              <td class="present">Present</td>
+            </tr>
+            <!-- Add more attendance records here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Course Status -->
+      <div class="card">
+        <h2>Course Status</h2>
+        <p>Current Level: Pratham Madhyama</p>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+        <h3>Exams</h3>
+        <ul>
+          <li>Pratham Madhyama: Passed</li>
+          <li>Purna Madhyama: Pending</li>
+        </ul>
+      </div>
+
+      <!-- Accounts -->
+      <div class="card">
+        <h2>Accounts</h2>
+        <div class="accounts-info">
+          <p>Total Fees Paid: ₹25,000</p>
+          <p>Outstanding Fees: ₹5,000</p>
+        </div>
+        <div class="accounts-chart">
+          <!-- Add a chart here -->
+        </div>
+      </div>
+
+      <!-- Events -->
+      <div class="card">
+        <h2>Upcoming Events</h2>
+        <ul class="events-list">
+          <li>2023-04-15: Arangetram Rehearsal</li>
+          <li>2023-04-30: Arangetram Performance</li>
+          <li>2023-05-01: Summer Break Begins</li>
+          <li>2023-06-15: Summer Classes Resume</li>
+        </ul>
+      </div>
+
+      <!-- Certificates -->
+      <div class="card">
+        <h2>Certificates</h2>
+        <table class="certificates-table">
+          <thead>
+            <tr>
+              <th>Certificate</th>
+              <th>Issued On</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pratham Madhyama</td>
+              <td>2022-12-15</td>
+            </tr>
+            <tr>
+              <td>Pratham Visharad</td>
+              <td>2021-06-30</td>
+            </tr>
+            <!-- Add more certificates here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
