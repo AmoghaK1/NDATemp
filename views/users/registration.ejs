@@ -1,417 +1,96 @@
-<% include(../layouts/header.ejs) %>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    }
-
-    body {
-        min-height: 100vh;
-        display: flex;
-        background: linear-gradient(135deg, #f5f7fa 0%, #e8e4ff 100%);
-    }
-
-    .signup-container {
-        display: flex;
-        width: 100%;
-        max-width: 1200px;
-        margin: auto;
-        padding: 20px;
-        gap: 40px;
-    }
-
-    .welcome-section {
-        display: flex;
-        flex-direction: column; 
-        height: 650px;
-        width: 500px;
-        margin-top: 51px;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(45deg, #4a154b, #7e22ce);
-        border-radius: 20px;
-        padding: 40px;
-        text-align: center;
-        box-shadow: 0 10px 25px rgba(126, 34, 206, 0.2);
-        transform: translateY(0);
-        transition: all 0.3s ease;
-    }
-
-    .welcome-section:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(126, 34, 206, 0.3);
-    }
-
-    .logo {
-        width: 150px;
-        height: 200px;
-        margin-bottom: 30px;
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-        transition: transform 0.3s ease;
-    }
-
-    .logo:hover {
-        transform: scale(1.05);
-    }
-
-    .welcome-content {
-        color: #ffffff;
-    }
-
-    .welcome-content h1 {
-        font-size: 2rem;
-        margin-bottom: 15px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        letter-spacing: 0.5px;
-        line-height: 1.3;
-        background: linear-gradient(to right, #ffffff, #e2e2e2);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-
-    .welcome-content p {
-        font-size: 1.1rem;
-        opacity: 0.9;
-        font-weight: 300;
-        letter-spacing: 0.5px;
-    }
-
-    .form-section {
-        flex: 1.2;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 40px;
-    }
-
-    .signup-form {
-        background: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 0.3s ease;
-    }
-
-    .signup-form:hover {
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    h2 {
-        margin-bottom: 10px;
-        color: #4a154b;
-        font-size: 1.8rem;
-        font-weight: 600;
-        letter-spacing: -0.5px;
-    }
-
-    .subtitle {
-        color: #6b7280;
-        margin-bottom: 30px;
-        font-size: 0.95rem;
-    }
-
-    .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 8px;
-        color: #4b5563;
-        font-size: 0.9rem;
-        font-weight: 500;
-    }
-
-    input, select {
-        width: 100%;
-        padding: 12px;
-        border: 1.5px solid #e5e7eb;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        background-color: #f9fafb;
-    }
-
-    input:hover, select:hover {
-        background-color: #ffffff;
-        border-color: #7e22ce;
-    }
-
-    input:focus, select:focus {
-        outline: none;
-        border-color: #7e22ce;
-        box-shadow: 0 0 0 3px rgba(126, 34, 206, 0.1);
-        background-color: #ffffff;
-    }
-
-    button {
-        width: 100%;
-        padding: 12px;
-        background: linear-gradient(45deg, #7e22ce, #9333ea);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(126, 34, 206, 0.2);
-    }
-
-    button:hover {
-        background: linear-gradient(45deg, #6b21a8, #7e22ce);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(126, 34, 206, 0.3);
-    }
-
-    .login-prompt {
-        text-align: center;
-        margin-top: 20px;
-        color: #6b7280;
-        font-size: 0.9rem;
-    }
-
-    .login-prompt a {
-        color: #7e22ce;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-
-    .login-prompt a:hover {
-        color: #4a154b;
-        text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-        body {
-            background: #f5f7fa;
-        }
-
-        .signup-container {
-            flex-direction: column;
-            padding: 0;
-            gap: 0;
-        }
-        
-        .welcome-section {
-            height: auto;
-            width: 100%;
-            margin-top: 0;
-            padding: 20px;
-            border-radius: 0 0 20px 20px;
-            flex-direction: row;
-            justify-content: flex-start;
-            gap: 20px;
-        }
-
-        .logo {
-            width: 60px;
-            height: 80px;
-            margin-bottom: 0;
-        }
-
-        .welcome-content {
-            text-align: left;
-        }
-
-        .welcome-content h1 {
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-        }
-
-        .welcome-content p {
-            font-size: 0.9rem;
-        }
-
-        .form-section {
-            padding: 20px;
-        }
-
-        .signup-form {
-            padding: 20px;
-            border-radius: 20px;
-            margin-top: 20px;
-        }
-
-        .form-row {
-            grid-template-columns: 1fr;
-            gap: 0;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        .subtitle {
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        input, select, button {
-            padding: 10px;
-            font-size: 0.9rem;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .welcome-section {
-            padding: 15px;
-        }
-
-        .logo {
-            width: 50px;
-            height: 70px;
-        }
-
-        .welcome-content h1 {
-            font-size: 1.2rem;
-        }
-
-        .welcome-content p {
-            font-size: 0.8rem;
-        }
-
-        .form-section {
-            padding: 15px;
-        }
-
-        .signup-form {
-            padding: 15px;
-        }
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nrutyashree Dance Academy - Sign Up</title>
+    <link rel="stylesheet" href="../stylesheets/registration.css">
 </head>
 <body>
-<!-- Rest of your HTML remains the same -->
-<!-- The content from your original file goes here unchanged -->
-<div class="signup-container">
-    <div class="welcome-section">
-        <img src="G:\PROGRAMMING\NDA\Photos\natraj-logo.png" alt="Nrutyashree Dance Academy Logo" class="logo">
-        <div class="welcome-content">
-            <h1>Join<br>Nrutyashree Dance Academy!</h1>
-            <p>Begin your journey in classical dance</p>
+    <!-- Rest of your HTML remains the same -->
+    <!-- The content from your original file goes here unchanged -->
+    <div class="signup-container">
+        <div class="welcome-section">
+            <img src="../images/natraj-logo.png" alt="Nrutyashree Dance Academy Logo" class="logo">
+            <div class="welcome-content">
+                <h1>Join<br>Nrutyashree Dance Academy!</h1>
+                <p>Begin your journey in classical dance</p>
+            </div>
+        </div>
+        <div class="form-section">
+            <div class="signup-form">
+                <h2>Sign Up</h2>
+                <p class="subtitle">Create your student account</p>
+                <form id="studentForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="username@gmail.com" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthdate">Birth Date</label>
+                            <input type="date" id="birthdate" name="birthdate" required onchange="calculateAge()">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" readonly>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Student Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentExam">Current Exam Level</label>
+                            <select id="currentExam" name="currentExam" required>
+                                <option value="">Select your level</option>
+                                <option value="newcomer">New Student</option>
+                                <option value="prarambik">Prarambik</option>
+                                <option value="praveshika-pratham">Praveshika Pratham</option>
+                                <option value="praveshika-purna">Praveshika Purna</option>
+                                <option value="madhyama-pratham">Madhyama Pratham</option>
+                                <option value="madhyama-purna">Madhyama Purna</option>
+                                <option value="visharad-pratham">Visharad Pratham</option>
+                                <option value="visharad-purna">Visharad Purna</option>
+                                <option value="nritya-visharad">Nritya Visharad</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="motherPhone">Mother's Phone Number</label>
+                            <input type="tel" id="motherPhone" name="motherPhone" placeholder="Enter mother's phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fatherPhone">Father's Phone Number</label>
+                            <input type="tel" id="fatherPhone" name="fatherPhone" placeholder="Enter father's phone number" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Create password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+                        </div>
+                    </div>
+                    <button type="submit">Create Account</button>
+                    <div class="login-prompt">
+                        Already have an account? <a href="#">Login</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="form-section">
-        <div class="signup-form">
-            <h2>Sign Up</h2>
-            <p class="subtitle">Create your student account</p>
-            <form id="studentForm">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="username@gmail.com" required>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="birthdate">Birth Date</label>
-                        <input type="date" id="birthdate" name="birthdate" required onchange="calculateAge()">
-                    </div>
-                    <div class="form-group">
-                        <label for="age">Age</label>
-                        <input type="number" id="age" name="age" readonly>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phone">Student Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="currentExam">Current Exam Level</label>
-                        <select id="currentExam" name="currentExam" required>
-                            <option value="">Select your level</option>
-                            <option value="newcomer">New Student</option>
-                            <option value="prarambik">Prarambik</option>
-                            <option value="praveshika-pratham">Praveshika Pratham</option>
-                            <option value="praveshika-purna">Praveshika Purna</option>
-                            <option value="madhyama-pratham">Madhyama Pratham</option>
-                            <option value="madhyama-purna">Madhyama Purna</option>
-                            <option value="visharad-pratham">Visharad Pratham</option>
-                            <option value="visharad-purna">Visharad Purna</option>
-                            <option value="nritya-visharad">Nritya Visharad</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="motherPhone">Mother's Phone Number</label>
-                        <input type="tel" id="motherPhone" name="motherPhone" placeholder="Enter mother's phone number" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="fatherPhone">Father's Phone Number</label>
-                        <input type="tel" id="fatherPhone" name="fatherPhone" placeholder="Enter father's phone number" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Create password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
-                    </div>
-                </div>
-                <button type="submit">Create Account</button>
-                <div class="login-prompt">
-                    Already have an account? <a href="#">Login</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
-<script>
-    function calculateAge() {
-        const birthdateInput = document.getElementById('birthdate');
-        const ageInput = document.getElementById('age');
-        
-        const birthdate = new Date(birthdateInput.value);
-        const today = new Date();
-        
-        let age = today.getFullYear() - birthdate.getFullYear();
-        const monthDiff = today.getMonth() - birthdate.getMonth();
-        
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthdate.getDate())) {
-            age--;
-        }
-        
-        ageInput.value = age;
-    }
+<script src="../javascripts/registration.js"></script>
+</body>
+</html>
 
-    document.getElementById('studentForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        
-        if (password !== confirmPassword) {
-            alert('Passwords do not match!');
-            return;
-        }
-        
-        // Add your form submission logic here
-        console.log('Form submitted successfully');
-    });
-</script> 
-
-<% include(../layouts/footer.ejs) %>
