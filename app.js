@@ -6,9 +6,7 @@ port = 7000
 
 app.set("view engine","ejs");
 app.use(express.static('./public'));
-//for user route
-// const userRoute = require('./routes/userRoutes');
-// app.use('/', userRoute);
+
 
 
 app.get('/',(req,res)=>{
