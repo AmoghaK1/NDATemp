@@ -1,0 +1,221 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #F0F0F0; /* Light Grey Background */
+    color: #333; /* Dark Grey Text */
+  }
+  
+  /* Navbar */
+  .my-navbar {
+    height: 7vh;
+    width: 100vw;
+    max-height: 15vh;
+    background-color: #F8F8F8; /* Lighter Grey */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .user-profile {
+    width: 20%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #user-pfp {
+    max-width: 2.2rem;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .navbar-center-section {
+    width: 65%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar-icons {
+    width: 15%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar-icons i:first-child {
+    margin-right: 30px;
+    color: #333; /* Dark Grey */
+  }
+  
+  .navbar-mobile {
+    display: none;
+  }
+  
+  /* Thought Section */
+  .thought-section {
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8F8F8; /* Lighter Grey */
+  }
+  
+  .thought-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F0F0F0; /* Light Grey */
+    height: 70%;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #333; /* Dark Grey */
+  }
+  
+  /* Main Section */
+  .main-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 60px auto;
+    padding: 20px;
+    width: 90%;
+  }
+  
+  .card {
+    background-color: #E0B0FF; /* Light Purple */
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: transform 0.3s ease;
+    width: 135px;
+    height: 175px;
+    margin: auto;
+    color: #333; /* Dark Grey */
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    background-color: #9B59B6; /* Darker Purple */
+  }
+  
+  .card-image {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    
+  }
+
+  .card-image img {
+    max-height: 80%;
+    max-width: 80%;
+    mix-blend-mode: multiply;
+  }
+
+  .card-text {
+    height: 30%;
+    width: 100%;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+
+  }
+
+
+  footer {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  footer h3 {
+    font-weight:800;
+  }
+  
+  footer a {
+    transition: color 0.3s ease;
+  }
+  
+  footer a:hover {
+    color: #fff;
+  }
+  
+  footer .fab {
+    font-size: 1.25rem;
+  }
+
+
+  /* Media Query for Smaller Screens */
+  @media screen and (max-width: 992px) {
+    .navbar-center-section {
+      display: none;
+    }
+  
+    .my-navbar {
+      justify-content: space-around;
+      gap: 5.5rem;
+    }
+  
+    .navbar-icons i:first-child {
+      margin-right: 20px;
+    }
+  
+    .user-name {
+      font-size: smaller;
+    }
+  
+    .navbar-mobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      width: 100vw;
+      background-color: azure;
+      font-size: smaller;
+    }
+  
+    .user-profile {
+      width: 40%;
+    }
+  
+    .thought-section {
+      height: 15vh;
+    }
+  
+    .thought-box {
+      font-size: small;
+      width: 80%;
+    }
+  
+    .main-section {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+  
+    .card {
+      width: 80px;
+      height: 120px;
+      padding: 5px;
+      margin: 10px;
+    }
+
+    .card-image img {
+      max-height: 60%;
+      max-width: 60%;
+    }
+
+    .card-text {
+      font-size: small;
+    }
+  }
