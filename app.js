@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/NDA_db");
 const express = require("express");
 const app = express();
-port = 7000
+port = 7000;
 
 app.set("view engine","ejs");
 app.use(express.static('./public'));
-    
+
 
 
 app.get('/',(req,res)=>{
@@ -18,11 +18,15 @@ app.get('/login',(req,res)=>{
 })
 
 app.get('/signup',(req,res)=>{
-    res.render('signup')
+    res.render('signup');
 })
 
 app.get('/st-dashboard',(req,res)=>{
-    res.render('student-dashboard')
+    res.render('student-dashboard');
+})
+
+app.get('/tr-dashboard', (req,res)=> {
+    res.render('teacher-dashboard');
 })
 
 app.listen(port, ()=>{

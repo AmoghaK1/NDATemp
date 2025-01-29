@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .card {
+            transition: all 0.3s ease;
+            height: 180px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .updates-container {
+            height: 400px;
+            overflow-y: auto;
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        .notification-badge {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <nav class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3">
+                    <img src="/api/placeholder/32/32" alt="Teacher" class="w-8 h-8 rounded-full">
+                    <h1 class="text-xl font-semibold">Teacher Dashboard</h1>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <i class="fas fa-bell text-gray-600"></i>
+                        <span class="notification-badge absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
+                    </div>
+                    <i class="fas fa-phone text-gray-600"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+        <!-- Quote -->
+        <div class="bg-gray-50 rounded-lg p-6 mb-8">
+            <p class="text-gray-700 italic">"Education is not the filling of a pail, but the lighting of a fire."</p>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="grid grid-cols-12 gap-8">
+            <!-- Updates Section -->
+            <div class="col-span-12 lg:col-span-4">
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h2 class="text-xl font-semibold mb-4">Updates</h2>
+                    <div class="updates-container space-y-4">
+                        <div class="bg-purple-50 rounded-lg p-4">
+                            <h3 class="font-medium">New Fee Payment</h3>
+                            <p class="text-sm text-gray-600">Student John Doe paid semester fees</p>
+                            <span class="text-xs text-gray-500">2 minutes ago</span>
+                        </div>
+                        <div class="bg-red-50 rounded-lg p-4">
+                            <h3 class="font-medium">Attendance Alert</h3>
+                            <p class="text-sm text-gray-600">3 students below 75% attendance</p>
+                            <span class="text-xs text-gray-500">1 hour ago</span>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <h3 class="font-medium">New Admission</h3>
+                            <p class="text-sm text-gray-600">2 new students enrolled today</p>
+                            <span class="text-xs text-gray-500">3 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="col-span-12 lg:col-span-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Attendance Card -->
+                    <div class="card bg-purple-50 rounded-lg p-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-semibold">Attendance</h3>
+                                <p class="text-sm text-gray-600 mt-1">Today's Status</p>
+                                <div class="mt-6 flex justify-between text-sm">
+                                    <span>Present: 42</span>
+                                    <span>Total: 45</span>
+                                </div>
+                                <div class="progress-bar bg-purple-200">
+                                    <div class="bg-purple-500 h-full rounded-full" style="width: 93%"></div>
+                                </div>
+                            </div>
+                            <i class="fas fa-users text-2xl text-purple-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- Fees Card -->
+                    <div class="card bg-blue-50 rounded-lg p-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-semibold">Fees Collection</h3>
+                                <p class="text-sm text-gray-600 mt-1">This Month</p>
+                                <div class="mt-6 flex justify-between text-sm">
+                                    <span>Collected: ₹85,000</span>
+                                    <span>Pending: ₹15,000</span>
+                                </div>
+                                <div class="progress-bar bg-blue-200">
+                                    <div class="bg-blue-500 h-full rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <i class="fas fa-dollar-sign text-2xl text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Card -->
+                    <div class="card bg-green-50 rounded-lg p-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-semibold">Today's Schedule</h3>
+                                <p class="text-sm text-gray-600 mt-1">4 Classes Remaining</p>
+                                <div class="mt-6 flex justify-between text-sm">
+                                    <span>Next: Mathematics</span>
+                                    <span>10:30 AM</span>
+                                </div>
+                                <div class="progress-bar bg-green-200">
+                                    <div class="bg-green-500 h-full rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <i class="fas fa-calendar text-2xl text-green-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- Performance Card -->
+                    <div class="card bg-yellow-50 rounded-lg p-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-semibold">Class Performance</h3>
+                                <p class="text-sm text-gray-600 mt-1">This Semester</p>
+                                <div class="mt-6 flex justify-between text-sm">
+                                    <span>Average Score: 85%</span>
+                                    <span>Target: 90%</span>
+                                </div>
+                                <div class="progress-bar bg-yellow-200">
+                                    <div class="bg-yellow-500 h-full rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <i class="fas fa-chart-line text-2xl text-yellow-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
