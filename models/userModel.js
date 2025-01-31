@@ -8,12 +8,28 @@ const userSchema = new mongoose.Schema ({
         type: String,
         required:true
     },
-    mob_no : {
+    birthdate : {
+        type: Date,
+        required:true
+    },
+    age : {
         type: Number,
         required:true
     },
-    pfp : {
+    student_ph_no : {
+        type: Number,
+        required:true
+    },
+    exam_level : {
         type: String,
+        required:true
+    },
+    mother_ph_no : {
+        type: Number,
+        required:true
+    },
+    father_ph_no : {
+        type: Number,
         required:true
     },
     password : {
