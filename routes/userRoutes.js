@@ -1,20 +1,27 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const user_route = express();
+var router = express.Router();
 
-user_route.use(bodyParser.json());
-user_route.use(bodyParser.urlencoded({extended: true}));
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({extended: true}));
+
 
 const userController = require('../controllers/userController');
-user_route.get('/signup', userController.loadRegister);
-try {
-    user_route.post('/signup', userController.addUser);
+router.post('/signup',(req,res)=>{
+    const userData = userController.req.body;
+    res.send(userData);
+});
+// user_route.get('/signup', userController.loadRegister);
+// try {
+//     user_route.post('/signup', userController.addUser);
 
-} catch{
-    console.log("Error sending request")
+// } catch{
+//     console.log("Error sending request")
+// }
+
+
+module.exports = {
+    router
 }
-
-
-module.exports = user_route;
 
 
