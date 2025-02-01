@@ -1,1 +1,4 @@
-app.use('/users',usersRouter);
+
+app.listen(port, ()=>{
+    console.log(`Server started on Port ${port}`);
+})
