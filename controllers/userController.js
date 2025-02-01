@@ -9,34 +9,50 @@ const loadRegister = async(req,res)=> {
 
 const addUser = async(req,res) => {
     try {
-        console.log(req.body);
+        console.log("Received form data:", req.body);
+
+        // Changed to match the form field name
+        if(req.body.password !== req.body.confirmPassword) {
+            return res.render('signup', { 
+                error: "Passwords don't match",
+                formData: req.body
+            });
+        }
+
         const user = new User({
             name: req.body.name,
             email: req.body.email,
             birthdate: req.body.birthdate,
             age: req.body.age,
-            student_ph_no: req.body.student_phone,
-            exam_level: req.body.currentExam,
-            mother_ph_no: req.body.motherPhone,
-            father_ph_no: req.body.fatherPhone,
+            student_ph_no: req.body.student_ph_no,  // Now matches form
+            exam_level: req.body.exam_level,        // Now matches form
+            mother_ph_no: req.body.mother_ph_no,    // Now matches form
+            father_ph_no: req.body.father_ph_no,    // Now matches form
             password: req.body.password,
             is_admin: 0
+        });
 
-        })
-    
+        console.log("Created user object:", user);
+
         const userData = await user.save();
-        console.log(userData);
-        if(userData){
-            res.render('login')
-        } else {
-            console.message("Error occured while registering");
-        }
+        console.log("Save result:", userData);
 
-    } catch(error) {
-        console.log(error.message);
+        if(userData) {
+            res.render('login', { success: "Registration successful! Please login." });
+        } else {
+            res.render('signup', { 
+                error: "Error occurred while registering",
+                formData: req.body
+            });
+        }
+    } catch (error) {
+        console.error("Registration error:", error);
+        res.render('signup', { 
+            error: error.message,
+            formData: req.body
+        });
     }
 }
-
 module.exports = {
     loadRegister,
     addUser
