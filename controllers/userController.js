@@ -53,8 +53,13 @@ const addUser = async(req,res) => {
         });
     }
 }
+
+const loadLogin = async(req,res) => {
+    res.render('login');
+}
 module.exports = {
     loadRegister,
-    addUser
+    addUser,
+    loadLogin
 
 }
