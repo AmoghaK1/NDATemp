@@ -120,7 +120,24 @@ body {
     transition: all 0.2s ease;
 }
 
+.form-group select {
+    width: 100%;
+    padding: min(10px, 1vw);
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: clamp(0.85em, 0.9vw, 1em);
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+
 .form-group input:focus {
+    border-color: #7e22ce;
+    box-shadow: 0 0 0 2px rgba(126, 34, 206, 0.1);
+    transform: translateY(-1px);
+}
+.form-group select:focus {
     border-color: #7e22ce;
     box-shadow: 0 0 0 2px rgba(126, 34, 206, 0.1);
     transform: translateY(-1px);
@@ -220,4 +237,95 @@ button:active {
 
 .form-section::-webkit-scrollbar-thumb:hover {
     background: #6b21a8;
+}
+
+
+.logo {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Welcome section fade in */
+.welcome-section {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Heading animation */
+.welcome-section h1 {
+    animation: slideDown 1s ease-out;
+}
+
+@keyframes slideDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Paragraph animation */
+.welcome-section p {
+    animation: slideUp 1s ease-out 0.3s backwards;
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to { 
+        opacity: 0.9;
+        transform: translateY(0);
+    }
+}
+
+/* Animated gradient overlay */
+.welcome-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+    animation: shimmer 4s ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(0deg); }
+    50% { transform: translateX(100%) rotate(5deg); }
+    100% { transform: translateX(-100%) rotate(0deg); }
+}
+
+/* Enhance hover effects */
+.welcome-section:hover::after {
+    animation-duration: 4s;
+    animation: shimmer 5s ease-in-out;
+}
+
+.welcome-section {
+    transition: transform 0.3s ease;
+}
+
+.welcome-section:hover {
+    transform: scale(1.01);
 }

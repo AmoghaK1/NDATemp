@@ -15,7 +15,7 @@
         </div>
         
         <div class="form-section">
-            <h2>Sign Up</h2>
+            <h2>Register</h2>
             <p>Please complete the registration form</p>
             
            <form action="/signup" method="post">
@@ -46,7 +46,18 @@
                 
                 <div class="form-group">
                     <label for="exam_level">Exam Level</label>
-                    <input type="text" id="exam_level" name="exam_level" required>
+                    <select id="exam_level" name="exam_level" required>
+                        <option value="">Select your level</option>
+                        <option value="newcomer">New Student</option>
+                        <option value="prarambik">Prarambik</option>
+                        <option value="praveshika-pratham">Praveshika Pratham</option>
+                        <option value="praveshika-purna">Praveshika Purna</option>
+                        <option value="madhyama-pratham">Madhyama Pratham</option>
+                        <option value="madhyama-purna">Madhyama Purna</option>
+                        <option value="visharad-pratham">Visharad Pratham</option>
+                        <option value="visharad-purna">Visharad Purna</option>
+                        <option value="nritya-visharad">Nritya Visharad</option>
+                    </select>
                 </div>
                 
                 <div class="form-group">
