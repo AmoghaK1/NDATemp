@@ -1,294 +1,331 @@
-* {
+/* Base styles */
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-}
-
-body {
     min-height: 100vh;
     display: flex;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8e4ff 100%);
+    background-color: #f5f3ff;
+    font-family: system-ui, -apple-system, sans-serif;
+    overflow: hidden;
 }
 
-.signup-container {
+.container {
     display: flex;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: auto;
-    padding: 20px;
-    gap: 40px;
+    padding: 1.5vw;
+    gap: 2vw;
 }
 
+/* Welcome section with enhanced gradient */
 .welcome-section {
+    flex: 0.8;
+    background: linear-gradient(135deg, #9333ea 0%, #7e22ce 50%, #6b21a8 100%);
+    border-radius: 16px;
+    padding: min(4vw, 40px);
+    color: white;
+    text-align: center;
     display: flex;
-    flex-direction: column; 
-    height: 650px;
-    width: 500px;
-    margin-top: 51px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(45deg, #4a154b, #7e22ce);
-    border-radius: 20px;
-    padding: 40px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(126, 34, 206, 0.2);
-    transform: translateY(0);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(126, 34, 206, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
-.welcome-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(126, 34, 206, 0.3);
+/* Add subtle gradient overlay */
+.welcome-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.1) 0%, transparent 60%);
 }
 
 .logo {
-    width: 150px;
-    height: 200px;
-    margin-bottom: 30px;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-    transition: transform 0.3s ease;
+    width: min(150px, 15vw);
+    margin-bottom: min(30px, 3vw);
+    position: relative;
+    transition: transform 0.2s ease-in-out;
 }
 
 .logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
-.welcome-content {
-    color: #ffffff;
+.welcome-section h1 {
+    margin: min(20px, 2vw) 0 min(10px, 1vw);
+    font-size: clamp(1.5em, 2vw, 2em);
+    position: relative;
 }
 
-.welcome-content h1 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    letter-spacing: 0.5px;
-    line-height: 1.3;
-    background: linear-gradient(to right, #ffffff, #e2e2e2);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.welcome-content p {
-    font-size: 1.1rem;
+.welcome-section p {
+    margin: 0;
     opacity: 0.9;
-    font-weight: 300;
-    letter-spacing: 0.5px;
+    font-size: clamp(0.9em, 1.2vw, 1.1em);
+    position: relative;
 }
 
+/* Form section */
 .form-section {
     flex: 1.2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px;
-}
-
-.signup-form {
     background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    border-radius: 16px;
+    padding: min(4vw, 40px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    max-height: 90vh;
 }
 
-.signup-form:hover {
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+.form-section h2 {
+    margin: 0 0 min(10px, 1vw);
+    color: #1f2937;
+    font-size: clamp(1.3em, 1.8vw, 1.8em);
 }
 
-h2 {
-    margin-bottom: 10px;
-    color: #4a154b;
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-}
-
-.subtitle {
+.form-section p {
+    margin: 0 0 min(30px, 3vw);
     color: #6b7280;
-    margin-bottom: 30px;
-    font-size: 0.95rem;
+    font-size: clamp(0.9em, 1vw, 1em);
 }
 
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
+/* Form groups with responsive spacing */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: min(20px, 2vw);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1vw;
 }
 
-label {
+.form-group label {
     display: block;
-    margin-bottom: 8px;
-    color: #4b5563;
-    font-size: 0.9rem;
+    margin-bottom: min(8px, 0.8vw);
+    color: #374151;
     font-weight: 500;
+    font-size: clamp(0.85em, 0.9vw, 1em);
 }
 
-input, select {
+.form-group input {
     width: 100%;
-    padding: 12px;
-    border: 1.5px solid #e5e7eb;
+    padding: min(10px, 1vw);
+    border: 1px solid #d1d5db;
     border-radius: 8px;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    background-color: #f9fafb;
-}
-
-input:hover, select:hover {
-    background-color: #ffffff;
-    border-color: #7e22ce;
-}
-
-input:focus, select:focus {
+    font-size: clamp(0.85em, 0.9vw, 1em);
     outline: none;
-    border-color: #7e22ce;
-    box-shadow: 0 0 0 3px rgba(126, 34, 206, 0.1);
-    background-color: #ffffff;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
 }
 
+.form-group select {
+    width: 100%;
+    padding: min(10px, 1vw);
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: clamp(0.85em, 0.9vw, 1em);
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+
+.form-group input:focus {
+    border-color: #7e22ce;
+    box-shadow: 0 0 0 2px rgba(126, 34, 206, 0.1);
+    transform: translateY(-1px);
+}
+.form-group select:focus {
+    border-color: #7e22ce;
+    box-shadow: 0 0 0 2px rgba(126, 34, 206, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Enhanced button styles */
 button {
     width: 100%;
-    padding: 12px;
-    background: linear-gradient(45deg, #7e22ce, #9333ea);
+    padding: min(12px, 1.2vw);
+    background: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: clamp(0.9em, 1vw, 1em);
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(126, 34, 206, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
 button:hover {
-    background: linear-gradient(45deg, #6b21a8, #7e22ce);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(126, 34, 206, 0.3);
+    background: linear-gradient(135deg, #8828dd 0%, #6b21a8 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(126, 34, 206, 0.2);
 }
 
-.login-prompt {
+button:active {
+    transform: translateY(0);
+}
+
+.error {
+    color: #dc2626;
+    margin-bottom: min(20px, 2vw);
+    font-size: clamp(0.85em, 0.9vw, 1em);
+}
+
+.login-link {
     text-align: center;
-    margin-top: 20px;
+    margin-top: min(20px, 2vw);
     color: #6b7280;
-    font-size: 0.9rem;
+    font-size: clamp(0.85em, 0.9vw, 1em);
 }
 
-.login-prompt a {
+.login-link a {
     color: #7e22ce;
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-.login-prompt a:hover {
-    color: #4a154b;
+.login-link a:hover {
+    color: #6b21a8;
     text-decoration: underline;
 }
 
+/* Responsive design */
 @media (max-width: 768px) {
     body {
-        background: #f5f7fa;
-    }
-
-    .signup-container {
-        flex-direction: column;
-        padding: 0;
-        gap: 0;
+        overflow-y: auto;
     }
     
+    .container {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
     .welcome-section {
-        height: auto;
-        width: 100%;
-        margin-top: 0;
-        padding: 20px;
-        border-radius: 0 0 20px 20px;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 20px;
-    }
-
-    .logo {
-        width: 60px;
-        height: 80px;
-        margin-bottom: 0;
-    }
-
-    .welcome-content {
-        text-align: left;
-    }
-
-    .welcome-content h1 {
-        font-size: 1.4rem;
-        margin-bottom: 5px;
-    }
-
-    .welcome-content p {
-        font-size: 0.9rem;
+        padding: 2rem;
+        min-height: 200px;
     }
 
     .form-section {
-        padding: 20px;
-    }
-
-    .signup-form {
-        padding: 20px;
-        border-radius: 20px;
-        margin-top: 20px;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    .subtitle {
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-    }
-
-    input, select, button {
-        padding: 10px;
-        font-size: 0.9rem;
+        padding: 1.5rem;
+        max-height: none;
     }
 
     .form-group {
-        margin-bottom: 15px;
+        grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 480px) {
-    .welcome-section {
-        padding: 15px;
-    }
+/* Custom scrollbar for form section */
+.form-section::-webkit-scrollbar {
+    width: 8px;
+}
 
-    .logo {
-        width: 50px;
-        height: 70px;
-    }
+.form-section::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
 
-    .welcome-content h1 {
-        font-size: 1.2rem;
-    }
+.form-section::-webkit-scrollbar-thumb {
+    background: #7e22ce;
+    border-radius: 4px;
+}
 
-    .welcome-content p {
-        font-size: 0.8rem;
-    }
+.form-section::-webkit-scrollbar-thumb:hover {
+    background: #6b21a8;
+}
 
-    .form-section {
-        padding: 15px;
-    }
 
-    .signup-form {
-        padding: 15px;
+.logo {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Welcome section fade in */
+.welcome-section {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-20px);
     }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Heading animation */
+.welcome-section h1 {
+    animation: slideDown 1s ease-out;
+}
+
+@keyframes slideDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Paragraph animation */
+.welcome-section p {
+    animation: slideUp 1s ease-out 0.3s backwards;
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to { 
+        opacity: 0.9;
+        transform: translateY(0);
+    }
+}
+
+/* Animated gradient overlay */
+.welcome-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+    animation: shimmer 4s ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(0deg); }
+    50% { transform: translateX(100%) rotate(5deg); }
+    100% { transform: translateX(-100%) rotate(0deg); }
+}
+
+/* Enhance hover effects */
+.welcome-section:hover::after {
+    animation-duration: 4s;
+    animation: shimmer 5s ease-in-out;
+}
+
+.welcome-section {
+    transition: transform 0.3s ease;
+}
+
+.welcome-section:hover {
+    transform: scale(1.01);
 }
