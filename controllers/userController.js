@@ -1,23 +1,18 @@
 const User = require('../models/userModel');
+const bcrypt = require("bcryptjs");
+
+//load register page
 const loadRegister = async(req,res)=> {
-    try {
-        res.render('signup');
-    } catch (error) {
-        console.log(error.message);
-    }
+   res.render('signup');
 }
 
 const addUser = async(req,res) => {
     try {
-        console.log("Received form data:", req.body);
 
-        // Changed to match the form field name
-        if(req.body.password !== req.body.confirmPassword) {
-            return res.render('signup', { 
-                error: "Passwords don't match",
-                formData: req.body
-            });
-        }
+       const existingUser = await User.findOne({email: req.body.email});
+       if(existingUser){
+        return res.send("Email Already In Use");
+       }
 
         const user = new User({
             name: req.body.name,
@@ -31,35 +26,41 @@ const addUser = async(req,res) => {
             password: req.body.password,
             is_admin: 0
         });
+        await user.save();
+        res.redirect('/student-dashboard');
 
-        console.log("Created user object:", user);
-
-        const userData = await user.save();
-        console.log("Save result:", userData);
-
-        if(userData) {
-            res.render('login', { success: "Registration successful! Please login." });
-        } else {
-            res.render('signup', { 
-                error: "Error occurred while registering",
-                formData: req.body
-            });
-        }
     } catch (error) {
-        console.error("Registration error:", error);
-        res.render('signup', { 
-            error: error.message,
-            formData: req.body
-        });
+        res.status(500).send("Error Registering User");
     }
-}
+};
 
-const loadLogin = async(req,res) => {
+//profile page
+const loadProfile = async(req,res)=>{
+    res.render('student-dashboard',{user: req.user});
+};
+
+const isAuthenticated = (req,res,next)=>{
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/");
+};
+
+const loadLogin = async(req,res)=>{
     res.render('login');
-}
+};
+
+const logout = (req,res)=>{
+    req.logout((err)=>{
+        if(err) return next(err);
+        res.redirect("/");
+    });
+};
 module.exports = {
     loadRegister,
     addUser,
+    loadProfile,
+    isAuthenticated,
+    logout,
     loadLogin
-
 }
