@@ -18,5 +18,3 @@ user_route.post('/login',passport.authenticate('local',{
 user_route.post('/login',userController.loginUser);
 
 module.exports = user_route;
-
-

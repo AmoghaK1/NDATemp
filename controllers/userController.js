@@ -71,7 +71,7 @@ const loginUser = async(req,res,next)=>{
         
         req.login(user,(err)=>{
             if (err) return next(err);
-            return res.redirect('/st-dashboard');
+            return res.redirect('/student-dashboard');
         });
     }catch(error){
         console.error("Login error: ",error);
