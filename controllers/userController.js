@@ -58,34 +58,17 @@ const addUser = async(req,res) => {
     }
 }
 
-const loginUser = async(req,res,next)=>{
-    try{
-        const user = await User.findOne({email: req.body.email});
-        if(!user){
-            return res.render('login',{error : "User Not Found"});
-        }
-        const isMatch = await bcrypt.compare(req.body.password, user.password);
-        if(!isMatch){
-            return res.render('login',{error:"Incorrect password"});
-        }
-        
-        req.login(user,(err)=>{
-            if (err) return next(err);
-            return res.redirect('/student-dashboard');
-        });
-    }catch(error){
-        console.error("Login error: ",error);
-        res.render('login',{error: "Something went wrong"});
-    }
-};
-
 const loadLogin = async(req,res) => {
     res.render('login');
 };
+
+const load_stDashboard = async(req,res)=>{
+    res.render('student-dashboard');
+}
 
 module.exports = {
     loadRegister,
     addUser,
     loadLogin,
-    loginUser
+    load_stDashboard
 };
