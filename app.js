@@ -47,7 +47,7 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/', userRoutes);
 
 app.get('/accounts',(req,res)=>{
-    res.render('accounts');
+    res.render('accounts2');
 })
 
 app.listen(port, ()=>{

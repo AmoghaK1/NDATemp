@@ -1,0 +1,21 @@
+        .month-card {
+            transition: all 0.3s ease;
+        }
+        .month-card:hover {
+            transform: translateY(-2px);
+        }
+        .months-grid {
+            max-height: 60vh;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+        .months-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+        .months-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .months-grid::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 3px;
+        }

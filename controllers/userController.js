@@ -82,6 +82,7 @@ const logout_user = async(req,res)=>{
     });
 }
 
+
 module.exports = {
     loadRegister,
     addUser,

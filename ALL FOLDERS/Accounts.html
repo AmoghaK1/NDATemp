@@ -1,115 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accounts Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="accounts.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Status Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .month-card {
+            transition: all 0.3s ease;
+        }
+        .month-card:hover {
+            transform: translateY(-2px);
+        }
+        .months-grid {
+            max-height: 60vh;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+        .months-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+        .months-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .months-grid::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 3px;
+        }
+    </style>
 </head>
-<body>
-    <div class="my-navbar">
-        <div class="user-profile">
-            <img id="user-pfp" src="pfp_final_1.png" alt="user-pfp">
-            <div class="user-name">Amogha Khare</div>
+<body class="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 p-4">
+    <div class="max-w-2xl mx-auto">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center">
+                <img class="w-12 h-12 rounded-full" src="/api/placeholder/48/48" alt="Profile">
+                <span class="ml-3 text-xl font-semibold text-purple-800">Amogha Khare</span>
+            </div>
         </div>
-        <div class="navbar-center-section">
-            <div>Accounts Dashboard</div>
+
+        <!-- Main Content -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-purple-800">Fee Status</h2>
+                <div class="flex items-center space-x-4">
+                    <button onclick="changeYear(-1)" class="p-2 hover:bg-purple-100 rounded-full transition-colors">
+                        <svg class="w-6 h-6 text-purple-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <span id="currentYear" class="text-xl font-semibold text-purple-800">2025</span>
+                    <button onclick="changeYear(1)" class="p-2 hover:bg-purple-100 rounded-full transition-colors">
+                        <svg class="w-6 h-6 text-purple-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Months Grid -->
+            <div id="monthsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 months-grid p-2">
+                <!-- Months will be dynamically inserted here -->
+            </div>
         </div>
-        <div class="navbar-icons">
-            <i class="fa-solid fa-bell nav-icon"></i>
-            <i class="fa-solid fa-phone"></i>
+
+        <!-- Summary Section -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-semibold text-purple-800 mb-3">Year Summary</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="p-3 bg-purple-50 rounded-lg">
+                    <p class="text-sm text-purple-600">Total Fees Paid</p>
+                    <p class="text-lg font-semibold text-purple-800" id="totalPaid">₹48,000</p>
+                </div>
+                <div class="p-3 bg-purple-50 rounded-lg">
+                    <p class="text-sm text-purple-600">Pending Amount</p>
+                    <p class="text-lg font-semibold text-purple-800" id="pendingAmount">₹4,000</p>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="navbar-mobile">
-        <div class="exam-name">Accounts Dashboard</div>
     </div>
 
-    <div class="thought-section">
-        <div class="thought-box">"Financial wisdom begins with understanding your educational investment."</div>
-    </div>
+    <script>
+        const months = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        
+        let currentYear = 2025;
+        const currentDate = new Date(2025, 1, 8); // Set to Feb 8, 2025
 
-   <div class="main-section">
-    <div class="card">
-        <div class="card-image">
-            <img src="payment-method.png" alt="payment img">
-        </div>
-        <div class="card-text">Fee Payment</div>
-    </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="due-date.png" alt="dues img">
-        </div>
-        <div class="card-text">Pending Dues</div>
-    </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="online-learning.png" alt="course fee img">
-        </div>
-        <div class="card-text">Current Course Fee</div>
-    </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="due-date.png" alt="due date img">
-        </div>
-        <div class="card-text">Next Fee Due</div>
-    </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="payment.png" alt="receipt img">
-        </div>
-        <div class="card-text">Payment History</div>
-    </div>
-   </div>
+        function getFeeStatus(month, year) {
+            const monthDate = new Date(year, months.indexOf(month), 1);
+            
+            if (monthDate > currentDate) {
+                return {
+                    status: 'Pending',
+                    color: 'bg-yellow-100 border-yellow-400 text-yellow-700',
+                    showButton: true
+                };
+            } else if (monthDate.getFullYear() === currentDate.getFullYear() && 
+                      monthDate.getMonth() <= currentDate.getMonth()) {
+                return {
+                    status: 'Paid',
+                    color: 'bg-green-100 border-green-400 text-green-700',
+                    showButton: false
+                };
+            } else if (monthDate < currentDate) {
+                return {
+                    status: 'PAID',
+                    color: 'bg-green-100 border-green-400 text-green-700',
+                    showButton: false
+                };
+            }
+        }
 
-   <footer class="bg-gray-200 text-gray-600 py-6">
-    <div class="container mx-auto flex flex-wrap justify-center text-center">
-      <div class="w-full sm:w-1/4 mb-4 sm:mb-0 px-4">
-        <h3 class="text-lg font-medium mb-2">Financial Support</h3>
-        <p class="text-sm">Need help with payment options?</p>
-        <a href="#" class="text-blue-500 hover:text-blue-600 text-sm">Contact Finance Office</a>
-      </div>
-      <div class="w-full sm:w-1/4 mb-4 sm:mb-0 px-4">
-        <h3 class="text-lg font-medium mb-2">Quick Links</h3>
-        <ul class="list-none text-sm">
-          <li><a href="#" class="text-gray-500 hover:text-gray-600">Dashboard</a></li>
-          <li><a href="#" class="text-gray-500 hover:text-gray-600">Accounts</a></li>
-          <li><a href="#" class="text-gray-500 hover:text-gray-600">Support</a></li>
-        </ul>
-      </div>
-      <div class="w-full sm:w-1/4 mb-4 sm:mb-0 px-4">
-        <h3 class="text-lg font-medium mb-2">Contact Finance</h3>
-        <p class="text-sm text-gray-500">
-          Finance Department<br>
-          Nrutyashree Dance Academy<br>
-          BT Kawade Road, Pune<br>
-          Phone: +91 9822155819
-        </p>
-      </div>
-      <div class="w-full sm:w-1/4 mb-4 sm:mb-0 px-4">
-        <h3 class="text-lg font-medium mb-2">Follow Us</h3>
-        <div class="flex justify-center">
-          <a href="#" class="text-gray-500 hover:text-gray-600 mx-2">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="text-gray-500 hover:text-gray-600 mx-2">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="text-gray-500 hover:text-gray-600 mx-2">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="#" class="text-gray-500 hover:text-gray-600 mx-2">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="bg-gray-300 py-4 mt-6">
-      <div class="container mx-auto text-center text-gray-500 text-sm">
-        &copy; 2008 Nrutyashree Dance Academy. All rights reserved.
-      </div>
-    </div>
-  </footer>
+        function createMonthCard(month, year) {
+            const status = getFeeStatus(month, year);
+            const monthCard = document.createElement('div');
+            monthCard.className = `month-card p-4 rounded-lg border ${status.color}`;
+            
+            monthCard.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-semibold">${month} ${year}</h3>
+                        <span class="text-sm font-medium">${status.status}</span>
+                    </div>
+                    ${status.showButton ? `
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            Pay now
+                        </button>
+                    ` : ''}
+                </div>
+            `;
+            return monthCard;
+        }
+
+        function updateMonthsGrid(year) {
+            const grid = document.getElementById('monthsGrid');
+            grid.innerHTML = '';
+            
+            months.forEach(month => {
+                const monthCard = createMonthCard(month, year);
+                grid.appendChild(monthCard);
+            });
+        }
+
+        function updateYearSummary(year) {
+            let totalPaid, pendingAmount;
+            
+            if (year < currentDate.getFullYear()) {
+                totalPaid = '₹96,000';
+                pendingAmount = '₹0';
+            } else if (year === currentDate.getFullYear()) {
+                totalPaid = '₹48,000';
+                pendingAmount = '₹4,000';
+            } else {
+                totalPaid = '₹0';
+                pendingAmount = '₹96,000';
+            }
+            
+            document.getElementById('totalPaid').textContent = totalPaid;
+            document.getElementById('pendingAmount').textContent = pendingAmount;
+        }
+
+        function changeYear(change) {
+            currentYear += change;
+            document.getElementById('currentYear').textContent = currentYear;
+            updateMonthsGrid(currentYear);
+            updateYearSummary(currentYear);
+        }
+
+        // Initialize the dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            updateMonthsGrid(currentYear);
+            updateYearSummary(currentYear);
+        });
+    </script>
 </body>
 </html>
