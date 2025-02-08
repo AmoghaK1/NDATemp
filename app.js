@@ -3,11 +3,12 @@ mongoose.connect("mongodb://localhost:27017/NDA_db");
 const express = require("express");
 const bodyParser = require('body-parser');
 const flash = require("connect-flash");
-
-
 const session = require("express-session");
 const passport = require("passport");
+const config = require("./config/config")
+
 require("./config/passport")(passport);
+
 
 const app = express();
 port = 7000;
@@ -25,8 +26,9 @@ app.set("view engine","ejs");
 app.use(session({
     resave: false,
     saveUninitialized: false,
-    secret:" haodaildalkdn",
-    cookie: { secure: false }
+    secret: config.session_secret,
+    cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 }
+   
 }))
 
 app.use(passport.initialize());

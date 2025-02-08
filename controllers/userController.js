@@ -1,4 +1,6 @@
 const User = require('../models/userModel');
+const session = require('express-session');
+
 const bcrypt = require('bcrypt');
 const loadRegister = async(req,res)=> {
     try {
@@ -10,9 +12,7 @@ const loadRegister = async(req,res)=> {
 
 const addUser = async(req,res) => {
     try {
-        console.log("Received form data:", req.body);
-
-        // Changed to match the form field name
+       // Changed to match the form field name
         if(req.body.password !== req.body.confirmPassword) {
             return res.render('signup', { 
                 error: "Passwords don't match",
@@ -20,6 +20,14 @@ const addUser = async(req,res) => {
             });
         }
 
+        const existingUser = await User.findOne({ email: req.body.email });
+        if (existingUser) {
+            return res.render('signup', { 
+                error: "Email is already registered. Please use a different one.",
+                formData: req.body
+    });
+}
+        
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
 
@@ -35,12 +43,7 @@ const addUser = async(req,res) => {
             password: hashedPassword,  // Store hashed password
             is_admin: 0
         });
-
-        console.log("Created user object:", user);
-
         const userData = await user.save();
-        console.log("Save result:", userData);
-
         if(userData) {
             res.render('login', { success: "Registration successful! Please login." });
         } else {
@@ -66,9 +69,23 @@ const load_stDashboard = async(req,res)=>{
     res.render('student-dashboard');
 }
 
+const logout_user = async(req,res)=>{
+    req.logout(function(err) {
+        if (err) { return next(err); }
+
+        req.session.regenerate((err) => {
+            if (err) return next(err);
+
+            res.clearCookie('connect.sid'); // Clear session cookie
+            res.redirect('/login'); // Redirect user
+        });
+    });
+}
+
 module.exports = {
     loadRegister,
     addUser,
     loadLogin,
-    load_stDashboard
+    load_stDashboard,
+    logout_user
 };

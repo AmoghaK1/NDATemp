@@ -5,6 +5,7 @@ body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #F0F0F0; /* Light Grey Background */
     color: #333; /* Dark Grey Text */
+    width: 100vw;
   }
   
   /* Navbar */
@@ -47,6 +48,24 @@ body {
     justify-content: center;
     align-items: center;
   }
+
+  #logout-btn {
+    height: 30px;
+    width: 80px;
+    background-color: #ff0e5a;
+    margin: 4px 10px; 
+    border-radius: 20px;
+    color: white;
+    transition: transform 0.3s ease-in-out; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; 
+}
+
+#logout-btn:hover {
+    transform: scale(1.09);
+}
   
   .navbar-icons i:first-child {
     margin-right: 30px;
@@ -220,4 +239,12 @@ body {
     .card-text {
       font-size: small;
     }
+
+   #logout-btn {
+          height: 25px;
+          width: 70px;
+          font-size: 12px; /* Smaller text for mobile */
+          margin: 5px; /* Reduce margin to prevent spacing issues */
+      }
   }
+  
