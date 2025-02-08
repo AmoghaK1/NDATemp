@@ -44,6 +44,9 @@ app.use((req, res, next) => {
 const userRoutes = require('./routes/userRoutes');
 app.use('/', userRoutes);
 
+app.get('/accounts',(req,res)=>{
+    res.render('accounts');
+})
 
 app.listen(port, ()=>{
     console.log(`Server started on Port ${port}`);
