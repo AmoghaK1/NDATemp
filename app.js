@@ -6,6 +6,8 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const config = require("./config/config")
+const paymentRoutes = require('./routes/payment');
+
 
 require("./config/passport")(passport);
 
@@ -54,5 +56,6 @@ app.listen(port, ()=>{
     console.log(`Server started on Port ${port}`);
 })
 
+app.use('/payment',paymentRoutes);
 module.exports = app;
 
