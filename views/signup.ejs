@@ -8,6 +8,10 @@
     <link rel="icon" type="image/x-icon" href="../images/nda-favicon-v2.png">
 </head>
 <body>
+    <% if (error) { %>
+        <p class="error-message"><%= error %></p>
+    <% } %>
+
     <div class="container">
         <div class="welcome-section">
             <img src="../images/natraj-logo.png" alt="Nrutyashree Logo" class="logo">
@@ -22,12 +26,12 @@
            <form action="/signup" method="post">
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" value="<%= formData ? formData.name : '' %>" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" value="<%= formData ? formData.name : '' %>" required>
                 </div>
                 
                 <div class="form-group">
@@ -42,7 +46,7 @@
                 
                 <div class="form-group">
                     <label for="student_ph_no">Student Phone Number</label>
-                    <input type="tel" id="student_ph_no" name="student_ph_no" required>
+                    <input type="tel" id="student_ph_no" name="student_ph_no" value="<%= formData ? formData.name : '' %>" required>
                 </div>
                 
                 <div class="form-group">
@@ -63,22 +67,22 @@
                 
                 <div class="form-group">
                     <label for="mother_ph_no">Mother's Phone Number</label>
-                    <input type="tel" id="mother_ph_no" name="mother_ph_no" required>
+                    <input type="tel" id="mother_ph_no" name="mother_ph_no" value="<%= formData ? formData.name : '' %>" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="father_ph_no">Father's Phone Number</label>
-                    <input type="tel" id="father_ph_no" name="father_ph_no" required>
+                    <input type="tel" id="father_ph_no" name="father_ph_no" value="<%= formData ? formData.name : '' %>" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" value="<%= formData ? formData.name : '' %>" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" value="<%= formData ? formData.name : '' %>" required>
                 </div>
                 
                 <button type="submit">Sign Up</button>

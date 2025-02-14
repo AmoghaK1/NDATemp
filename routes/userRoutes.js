@@ -21,7 +21,7 @@ user_route.post('/login', (req, res, next) => {
         }
         if (!user) {
             console.log("Authentication Failed:", info);
-            return res.render("login", { error: info.message });
+            return res.render("login", { error: info.message, success: null });
         }
 
         req.logIn(user, (err) => {
