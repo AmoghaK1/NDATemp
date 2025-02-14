@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     thoughtText.textContent = `"${storedThought.text}"`;
     thoughtAuthor.textContent = `${storedThought.author}`;
+
+    
     
     // Get the logout button
     const logoutBtn = document.getElementById('logout-btn');
