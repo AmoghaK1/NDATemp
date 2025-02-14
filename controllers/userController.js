@@ -66,7 +66,18 @@ const loadLogin = async(req,res) => {
 };
 
 const load_stDashboard = async(req,res)=>{
-    res.render('student-dashboard');
+    try {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/login');
+        }
+        
+        res.render('student-dashboard', {
+            user: req.user // Pass the logged-in user data to the view
+        });
+    } catch (error) {
+        console.log(error.message);
+        res.redirect('/login');
+    }
 }
 
 const logout_user = async(req,res)=>{
