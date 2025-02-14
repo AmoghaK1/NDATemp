@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <style>
+.profile-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7ff 0%, #eef1ff 100%);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.id-card {
+  background: white;
+  width: 340px;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 
+    0 10px 30px rgba(108, 92, 231, 0.15),
+    0 0 0 1px rgba(108, 92, 231, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.id-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to right, #6c5ce7, #8e44ad);
+}
+
+.id-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic-container {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid white;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background: white;
+  position: relative;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.change-photo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(108, 92, 231, 0.9);
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.profile-pic-container:hover .change-photo {
+  opacity: 1;
+}
+
+.id-details {
+  text-align: center;
+}
+
+.student-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 10px 0;
+}
+
+.student-role {
+  color: #6c5ce7;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.info-grid {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.info-item:hover {
+  background: #f0f2f5;
+  transform: translateX(5px);
+}
+
+.info-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  width: 100px;
+}
+
+.info-value {
+  color: #2c3e50;
+  flex: 1;
+}
+
+.edit-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.edit-button:hover {
+  transform: rotate(180deg);
+  background: white;
+}
+
+.id-number {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: white;
+  font-size: 0.8rem;
+  z-index: 1;
+}
+
+.barcode {
+  margin-top: 20px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.barcode img {
+  max-width: 200px;
+  height: 40px;
+}
+
+.valid-until {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+</style>
+</head>
+<body>
+
+<div class="profile-container">
+  <div class="id-card">
+    <span class="id-number">ID: 2024-0001</span>
+    <button class="edit-button">✏️</button>
+    
+    <div class="id-header">
+      <div class="profile-pic-container">
+        <img src="/api/placeholder/120/120" alt="Profile Picture" class="profile-pic">
+        <div class="change-photo">Change Photo</div>
+      </div>
+    </div>
+    
+    <div class="id-details">
+      <div class="student-name">Amogha Khare</div>
+      <div class="student-role">New Student</div>
+      
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">DOB</span>
+          <span class="info-value">01-01-2000</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Phone</span>
+          <span class="info-value">+1 234 567 8900</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <span class="info-value">amogha@example.com</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Joined</span>
+          <span class="info-value">15-02-2024</span>
+        </div>
+      </div>
+      
+      <div class="barcode">
+        <img src="/api/placeholder/200/40" alt="Barcode">
+      </div>
+      
+      <div class="valid-until">
+        Valid until: 31-12-2024
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

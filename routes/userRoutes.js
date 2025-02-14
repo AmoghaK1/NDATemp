@@ -36,5 +36,6 @@ user_route.post('/login', (req, res, next) => {
 ;
 user_route.get('/st-dashboard', auth.ensureAuthenticated, userController.load_stDashboard);
 user_route.get('/logout', userController.logout_user);
+user_route.get('/st-profile', auth.ensureAuthenticated, userController.loadProfile);
 
 module.exports = user_route;

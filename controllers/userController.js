@@ -107,11 +107,15 @@ const logout_user = async(req,res)=>{
     });
 }
 
+const loadProfile = async(req,res) => {
+    res.render('student-profile')
+}
 
 module.exports = {
     loadRegister,
     addUser,
     loadLogin,
     load_stDashboard,
-    logout_user
+    logout_user,
+    loadProfile
 };
