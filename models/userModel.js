@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const userSchema = new mongoose.Schema ({
     name : {
         type: String,
@@ -43,7 +44,17 @@ const userSchema = new mongoose.Schema ({
     is_verified : {
         type: Number,
         default: 0
+    },
+    createdAt: {  // Changed from joinDate to createdAt
+        type: Date,
+        default: Date.now
+    },
+    profilePicture: {
+        type: String,
+        default: '../images/pfp_final_1.png'  // Default profile picture
     }
+    }, {
+    timestamps: true  // This will automatically add createdAt and updatedAt fields
     
 });
 

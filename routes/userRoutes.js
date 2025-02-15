@@ -37,5 +37,8 @@ user_route.post('/login', (req, res, next) => {
 user_route.get('/st-dashboard', auth.ensureAuthenticated, userController.load_stDashboard);
 user_route.get('/logout', userController.logout_user);
 user_route.get('/st-profile', auth.ensureAuthenticated, userController.loadProfile);
+user_route.put('/api/profile/update', auth.ensureAuthenticated, userController.updateProfile);
+user_route.post('/api/profile/update-picture', auth.ensureAuthenticated, userController.updateProfilePicture);
+user_route.post('/api/profile/change-password', auth.ensureAuthenticated, userController.changePassword);
 
 module.exports = user_route;

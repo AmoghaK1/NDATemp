@@ -1,7 +1,38 @@
 const User = require('../models/userModel');
 const session = require('express-session');
-
+const multer = require('multer')
+const path = require('path')
 const bcrypt = require('bcrypt');
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './public/profile-pictures');  // Make sure this directory exists
+    },
+    filename: function(req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, uniqueSuffix + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 5 * 1024 * 1024  // 5MB limit
+    },
+    fileFilter: function(req, file, cb) {
+        const filetypes = /jpeg|jpg|png/;
+        const mimetype = filetypes.test(file.mimetype);
+        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+
+        if (mimetype && extname) {
+            return cb(null, true);
+        }
+        cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+    }
+}).single('profilePicture');
+
+
+
 const loadRegister = async(req,res)=> {
     try {
         res.render('signup', { error: null, formData: {} }); // Always pass an empty formData object
@@ -107,9 +138,227 @@ const logout_user = async(req,res)=>{
     });
 }
 
-const loadProfile = async(req,res) => {
-    res.render('student-profile')
-}
+
+const loadProfile = async(req, res) => {
+    try {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/login');
+        }
+
+        // Format the date before sending to view
+        const user = req.user.toObject(); // Convert mongoose doc to plain object
+        if (user.birthdate) {
+            user.birthdate = new Date(user.birthdate).toLocaleDateString('en-GB');
+        }
+        if (user.joinDate) {
+            user.joinDate = new Date(user.joinDate).toLocaleDateString('en-GB');
+        }
+
+        res.render('student-profile', {
+            user: user,
+            error: null,
+            success: null
+        });
+    } catch (error) {
+        console.error("Profile loading error:", error);
+        res.render('student-profile', {
+            user: req.user,
+            error: "Error loading profile",
+            success: null
+        });
+    }
+};
+
+
+const updateProfile = async(req, res) => {
+    try {
+        if (!req.isAuthenticated()) {
+            return res.status(401).json({ error: "Not authenticated" });
+        }
+
+        const allowedUpdates = [
+            'name', 
+            'email', 
+            'student_ph_no', 
+            'father_ph_no', 
+            'mother_ph_no'
+        ];
+
+        // Validate updates
+        const updates = Object.keys(req.body);
+        const isValidOperation = updates.every(update => 
+            allowedUpdates.includes(update)
+        );
+
+        if (!isValidOperation) {
+            return res.status(400).json({ error: 'Invalid updates!' });
+        }
+
+        // Check if email is being changed and if it's already in use
+        if (req.body.email && req.body.email !== req.user.email) {
+            const existingUser = await User.findOne({ 
+                email: req.body.email,
+                _id: { $ne: req.user._id } // Exclude current user
+            });
+            if (existingUser) {
+                return res.status(400).json({ error: 'Email already in use' });
+            }
+        }
+
+        // Update user
+        const user = await User.findById(req.user._id);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        updates.forEach(update => user[update] = req.body[update]);
+        await user.save();
+
+        // Format dates for response
+        const userData = user.toObject();
+        if (userData.birthdate) {
+            userData.birthdate = new Date(userData.birthdate).toLocaleDateString('en-GB');
+        }
+        if (userData.joinDate) {
+            userData.joinDate = new Date(userData.joinDate).toLocaleDateString('en-GB');
+        }
+
+        res.json(userData);
+    } catch (error) {
+        console.error("Profile update error:", error);
+        res.status(400).json({ error: error.message });
+    }
+};
+
+const updateProfilePicture = async(req, res) => {
+    upload(req, res, async function(err) {
+        try {
+            if (err instanceof multer.MulterError) {
+                return res.status(400).json({ error: 'File upload error: ' + err.message });
+            } else if (err) {
+                return res.status(400).json({ error: err.message });
+            }
+
+            if (!req.file) {
+                return res.status(400).json({ error: 'No file uploaded' });
+            }
+
+            const user = await User.findById(req.user._id);
+            if (!user) {
+                return res.status(404).json({ error: 'User not found' });
+            }
+
+            // Update profile picture path
+            user.profilePicture = `/uploads/profile-pictures/${req.file.filename}`;
+            await user.save();
+
+            res.json({ 
+                success: true, 
+                profilePicture: user.profilePicture 
+            });
+        } catch (error) {
+            console.error("Profile picture update error:", error);
+            res.status(500).json({ error: 'Server error' });
+        }
+    });
+};
+
+const changePassword = async(req, res) => {
+    try {
+        // Check authentication
+        if (!req.isAuthenticated()) {
+            console.log('Unauthorized password change attempt');
+            return res.status(401).json({ 
+                success: false,
+                error: "Not authenticated" 
+            });
+        }
+
+        const { currentPassword, newPassword, confirmPassword } = req.body;
+
+        // Log sanitized request info for debugging
+        console.log('Password change attempt for user:', req.user._id);
+        console.log('Request body received:', {
+            hasCurrentPassword: !!currentPassword,
+            hasNewPassword: !!newPassword,
+            hasConfirmPassword: !!confirmPassword
+        });
+
+        // Validate input
+        if (!currentPassword || !newPassword || !confirmPassword) {
+            return res.status(400).json({ 
+                success: false,
+                error: "All fields are required" 
+            });
+        }
+
+        // Validate password length and complexity if needed
+        if (newPassword.length < 8) {
+            return res.status(400).json({
+                success: false,
+                error: "New password must be at least 8 characters long"
+            });
+        }
+
+        // Check if new password and confirm password match
+        if (newPassword !== confirmPassword) {
+            return res.status(400).json({ 
+                success: false,
+                error: "New passwords don't match" 
+            });
+        }
+
+        // Get user from database
+        const user = await User.findById(req.user._id);
+        if (!user) {
+            console.error('User not found in database:', req.user._id);
+            return res.status(404).json({ 
+                success: false,
+                error: "User not found" 
+            });
+        }
+
+        // Verify current password
+        const isMatch = await bcrypt.compare(currentPassword, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ 
+                success: false,
+                error: "Current password is incorrect" 
+            });
+        }
+
+        // Hash new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        
+        // Update password
+        user.password = hashedPassword;
+        await user.save();
+
+        console.log('Password successfully changed for user:', req.user._id);
+
+        // Send consistent success response
+        res.json({ 
+            success: true,
+            message: "Password updated successfully" 
+        });
+
+    } catch (error) {
+        // Detailed error logging
+        console.error("Password change error:", {
+            userId: req?.user?._id,
+            error: error.message,
+            stack: error.stack
+        });
+
+        // Send consistent error response
+        res.status(500).json({ 
+            success: false,
+            error: "Server error occurred while changing password" 
+        });
+    }
+};
+
+
 
 module.exports = {
     loadRegister,
@@ -117,5 +366,8 @@ module.exports = {
     loadLogin,
     load_stDashboard,
     logout_user,
-    loadProfile
+    loadProfile,
+    updateProfile,
+    updateProfilePicture,
+    changePassword
 };

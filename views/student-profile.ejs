@@ -4,285 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student ID Card</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f5f7ff 0%, #eef1ff 100%);
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .id-card {
-            background: white;
-            width: 95%;
-            max-width: 1200px; /* Increased for laptops */
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15);
-            overflow: hidden;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .card-content {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .left-section {
-            background: linear-gradient(to right, #6c5ce7, #8e44ad);
-            padding: min(6vh, 30px);
-            position: relative;
-        }
-
-        .right-section {
-            padding: 30px;
-            flex: 1;
-        }
-
-        .section-title {
-            color: #6c5ce7;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .info-grid {
-            display: grid;
-            gap: 20px;
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            white-space: nowrap; /* Prevent wrapping */
-        }
-
-        .info-label {
-            color: #6c757d;
-            width: 130px; /* Fixed width */
-            font-size: 0.9rem;
-        }
-
-        .info-value {
-            color: #2c3e50;
-            flex: 1;
-            font-size: 0.9rem;
-        }
-
-        .barcode-section {
-            margin-top: 30px;
-            text-align: center;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .valid-until {
-            margin-top: 10px;
-            color: #6c757d;
-            font-size: 0.9rem;
-        }
-
-        /* Desktop Layout */
-        @media (min-width: 768px) {
-            .card-content {
-                flex-direction: row;
-                min-height: 600px;
-            }
-
-            .left-section {
-                width: 30%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .right-section {
-                width: 70%;
-                padding: 40px 50px;
-            }
-
-            .info-grid {
-                column-gap: 40px; /* More space between columns */
-                row-gap: 20px;
-            }
-
-            .info-item {
-                padding: 15px 20px;
-            }
-        }
-
-        /* Profile Section Styles */
-        .profile-container {
-            width: 150px;
-            height: 150px;
-            margin: 20px auto;
-            position: relative;
-        }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 4px solid white;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .profile-pic img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .student-info {
-            text-align: center;
-            color: white;
-            margin-top: 15px;
-        }
-
-        .student-name {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .student-role {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        .id-number {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .edit-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        /* Small Device Optimizations */
-        @media (max-width: 380px) {
-            .id-card {
-                width: 100%;
-                margin: 0;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .info-item {
-                padding: 12px;
-            }
-
-            .info-label {
-                width: 120px;
-                font-size: 0.85rem;
-            }
-
-            .info-value {
-                font-size: 0.85rem;
-            }
-        }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheets/st-profile.css">
 </head>
-<body>
-    <div class="id-card">
-        <div class="card-content">
-            <div class="left-section">
-                <span class="id-number">ID: 2024-0001</span>
-                <button class="edit-button">✏️</button>
+<body class="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 p-4 md:p-8 flex items-center justify-center">
+    <script src="../javascripts/st-profile.js"></script>
+    <div class="w-full max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
+        <!-- Original content remains the same until the modal -->
+        <div class="flex flex-col md:flex-row">
+            <!-- Left Section -->
+            <div class="gradient-bg p-8 md:w-1/3 relative">
+               <button class="absolute top-4 right-4 bg-white/90 hover:bg-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105" onclick="openEditModal()">
+                    ✏️
+                </button>
                 
-                <div class="profile-container">
-                    <div class="profile-pic">
-                        <img src="/api/placeholder/150/150" alt="Profile Picture">
+                <div class="flex flex-col items-center justify-center h-full space-y-6">
+                    <div class="profile-container w-32 h-32 md:w-40 md:h-40 relative">
+                        <div class="w-full h-full rounded-full overflow-hidden border-4 border-white/90 shadow-lg">
+                            <img src="../images/pfp_final_1.png" alt="Profile Picture" 
+                                 class="w-full h-full object-cover transition-transform duration-300">
+                        </div>
                     </div>
-                </div>
-                
-                <div class="student-info">
-                    <h2 class="student-name">Amogha Khare</h2>
-                    <p class="student-role">New Student</p>
+                    
+                    <div class="text-center text-white space-y-2">
+                        <h2 class="text-2xl md:text-3xl font-bold" data-field="name"><%= user.name %></h2>
+                        <p class="text-white/90"><%= user.exam_level %></p>
+                    </div>
                 </div>
             </div>
             
-            <div class="right-section">
-                <h3 class="section-title">Personal Information</h3>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <span class="info-label">DOB</span>
-                        <span class="info-value">01-01-2000</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Blood Group</span>
-                        <span class="info-value">O+</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Student Email</span>
-                        <span class="info-value">amogha@example.com</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Joined Date</span>
-                        <span class="info-value">15-02-2024</span>
-                    </div>
-                </div>
+            <!-- Right Section -->
+            <div class="p-6 md:p-8 lg:p-10 md:w-2/3">
+                <!-- Original sections remain the same -->
+                <div class="space-y-8">
+                    <!-- Personal Information Section -->
+                    <section>
+                        <!-- ... (keep existing personal information section) ... -->
+                    </section>
 
-                <h3 class="section-title" style="margin-top: 30px;">Contact Information</h3>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <span class="info-label">Student Phone</span>
-                        <span class="info-value">+1 234 567 8900</span>
+                    <!-- Contact Information Section -->
+                    <section>
+                        <h3 class="text-purple-600 text-xl font-semibold mb-4">Personal Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="info-item bg-gray-50 p-4 rounded-xl">
+                                <span class="block text-gray-500 text-sm">DOB</span>
+                                <span class="text-gray-800" data-field="birthdate"><%= user.birthdate %></span>
+                            </div>
+                            <div class="info-item bg-gray-50 p-4 rounded-xl">
+                                <span class="block text-gray-500 text-sm">Age</span>
+                                <span class="text-gray-800"><%= user.age %></span>
+                            </div>
+                            <div class="info-item bg-gray-50 p-4 rounded-xl">
+                                <span class="block text-gray-500 text-sm">Student Email</span>
+                                <span class="text-gray-800" data-field="email"><%= user.email %></span>
+                            </div>
+                            <div class="info-item bg-gray-50 p-4 rounded-xl">
+                                <span class="block text-gray-500 text-sm">Joined Date</span>
+                               <span class="text-gray-800"><%= new Date(user.joinDate).toLocaleDateString('en-GB') %></span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="text-purple-600 text-xl font-semibold mb-4">Contact Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="info-item bg-gray-50 p-4 rounded-xl">
+                                <span class="block text-gray-500 text-sm">Student Phone</span>
+                                <span class="text-gray-800" data-field="student_ph_no"><%= user.student_ph_no %></span>
+                            </div>
+                            <div class="info-item bg-gray-50 p-4 rounded-xl">
+                                <span class="block text-gray-500 text-sm">Father's Phone</span>
+                                <span class="text-gray-800" data-field="father_ph_no"><%= user.father_ph_no %></span>
+                            </div>
+                            <div class="info-item bg-gray-50 p-4 rounded-xl">
+                                <span class="block text-gray-500 text-sm">Mother's Phone</span>
+                                <span class="text-gray-800" data-field="mother_ph_no"><%= user.mother_ph_no %></span>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <div class="bg-gray-50 p-6 rounded-xl text-center space-y-2">
+                        <img src="../images/barcode.gif" alt="Barcode" class="mx-auto transition-transform duration-300 hover:scale-105">
+                        <div class="text-gray-500 text-sm">Valid until: 31/12/2025</div>
                     </div>
-                    <div class="info-item">
-                        <span class="info-label">Father's Phone</span>
-                        <span class="info-value">+1 234 567 8901</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Mother's Phone</span>
-                        <span class="info-value">+1 234 567 8902</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Emergency No.</span>
-                        <span class="info-value">+1 234 567 8903</span>
-                    </div>
-                </div>
-                
-                <div class="barcode-section">
-                    <img src="/api/placeholder/200/40" alt="Barcode">
-                    <div class="valid-until">Valid until: 31-12-2024</div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal with Profile and Password Forms -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" id="editModal">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold">Edit Profile</h2>
+                <div class="space-x-2">
+                    <button type="button" class="text-purple-600 hover:text-purple-800" onclick="showProfileForm()">Profile</button>
+                    <button type="button" class="text-purple-600 hover:text-purple-800" onclick="showPasswordForm()">Password</button>
+                </div>
+            </div>
+
+            <!-- Profile Edit Form -->
+            <form id="editProfileForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Phone</label>
+                    <input type="tel" name="student_ph_no" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Father's Phone</label>
+                    <input type="tel" name="father_ph_no" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Mother's Phone</label>
+                    <input type="tel" name="mother_ph_no" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button type="button" class="px-4 py-2 bg-gray-200 rounded-md" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded-md">Save Changes</button>
+                </div>
+            </form>
+
+            <!-- Password Change Form -->
+            <form id="changePasswordForm" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Current Password</label>
+                    <input type="password" name="currentPassword" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">New Password</label>
+                    <input type="password" name="newPassword" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Confirm New Password</label>
+                    <input type="password" name="confirmPassword" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button type="button" class="px-4 py-2 bg-gray-200 rounded-md" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded-md">Change Password</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>
