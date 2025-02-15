@@ -44,38 +44,19 @@ function createMonthCard(month, year) {
             </div>
             ${status.showButton ? `
                 <button class="pay-button bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                    Pay now
+                   <a href="paynow"> Pay now </a>
                 </button>
             ` : ''}
         </div>
     `;
     
-    if(status.showButton){
-        const payButton = monthCard.querySelector('.pay-button');
-        payButton.addEventListener('click',()=>processPayment(month,year));
-    }
+    // if(status.showButton){
+    //     const payButton = monthCard.querySelector('.pay-button');
+    //     payButton.addEventListener('click',()=>processPayment(month,year));
+    // }
     return monthCard;
 }
 
-function processPayment(month,year){
-    fetch('/payment/pay-fee',{
-        method: 'POST',
-        headers:{'Content-type': 'application/json'},
-        body: JSON.stringify({month,year})
-    })
-    .then(response => response.json())
-    .then(data=>{
-        if(data.success){
-            alert(`Payment for ${month} ${year} successfull !`);
-            updateMonthsGrid(currentYear);
-            updateYearSummary(currentYear);
-        }
-        else{
-            alert(`Payment failed: ${data.message}`);
-        }
-    })
-    .catch(error =>console.error('Error:',error));
-}
 
 function updateMonthsGrid(year) {
     const grid = document.getElementById('monthsGrid');
