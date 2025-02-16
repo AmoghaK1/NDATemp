@@ -16,6 +16,35 @@ document.addEventListener('DOMContentLoaded', () => {
         dobElement.textContent = formatDate(dobElement.textContent);
     }
 
+    
+    document.getElementById('profilePicture').addEventListener('change', async function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+    
+        const formData = new FormData();
+        formData.append('profilePicture', file);
+    
+        try {
+            const response = await fetch('/api/profile/update-picture', {
+                method: 'POST',
+                body: formData
+            });
+    
+            const data = await response.json();
+            if (data.success) {
+                document.getElementById('profileImage').src = data.profilePicture;
+                // Optional: Show success message
+                alert('Profile picture updated successfully!');
+            } else {
+                alert(data.error || 'Failed to update profile picture');
+            }
+        } catch (error) {
+            console.error('Error uploading profile picture:', error);
+            alert('Failed to upload profile picture');
+        }
+    });
+
+
     // Form visibility toggling functions
     window.showProfileForm = () => {
         document.getElementById('editProfileForm').classList.remove('hidden');

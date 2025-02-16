@@ -37,6 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static('public/uploads'));  
 app.use(flash());
 app.use((req, res, next) => {
     res.locals.user = req.user; // Make user data available globally in views
