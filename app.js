@@ -14,9 +14,7 @@ require("./config/passport")(passport);
 
 const app = express();
 port = 7000;
-mongoose.connect(process.env.MONGO_URI, {
-    
-  }).then(() => {
+mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log("Connected to MongoDB!");
   }).catch(err => {
     console.error("MongoDB connection error:", err);
