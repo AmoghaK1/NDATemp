@@ -6,37 +6,47 @@
     <title>Enrolled - Nrutyashree Dance Academy</title>
     <link rel="icon" type="image/x-icon" href="../images/nda-favicon-v2.png">
     <style>
-        * {
+        /* Reset and Base Styles */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
         body {
             background: linear-gradient(135deg, #8a2be2, #4169e1);
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
             position: relative;
+            padding: 0.5rem;
         }
+        
+        /* Background Animations */
         .container {
             height: 100%;
-            background: linear-gradient(135deg, #8a2be2, #4169e1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
             overflow: hidden;
+            z-index: 0;
         }
+        
         .particle {
             position: absolute;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             animation: float 15s infinite linear;
         }
+        
         @keyframes float {
             0% {
                 transform: translateY(0) rotate(0deg);
@@ -59,92 +69,12 @@
             position: absolute;
             background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
             height: 50%;
-            width: 200px;
+            width: 15%;
             transform: rotate(45deg);
             filter: blur(5px);
             z-index: 2;
             animation: lightMove 8s linear infinite;
             opacity: 0;
-        }
-        
-        .card {
-            background-color: #F7F7F7;
-            border-radius: 8px;
-            padding: 2rem;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            position: relative;
-            z-index: 10;
-            animation: fadeIn 0.8s ease-out;
-            opacity: 0.95;
-        }
-        
-        .logo {
-            width: 150px;
-            margin-bottom: 1.5rem;
-            animation: gentlePulse 4s ease-in-out infinite;
-        }
-        
-        h1 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 2rem;
-        }
-        
-        p {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-        }
-        
-        .success-icon {
-            font-size: 52px;
-            color: #4CAF50;
-            margin-bottom: 1.2rem;
-            display: inline-block;
-            animation: successPop 0.5s ease-out;
-        }
-        
-        .notification-highlight {
-            font-weight: 500;
-            color: #555;
-            background-color: rgba(97, 131, 235, 0.1);
-            padding: 0.8rem;
-            border-radius: 5px;
-            border-left: 3px solid #6183eb;
-            text-align: left;
-            margin: 1.5rem 0;
-            animation: slideIn 0.5s ease-out 0.3s both;
-        }
-        
-        .return-link {
-            color: #4f75e2;
-            text-decoration: none;
-            font-size: 14px;
-            display: inline-block;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            background-color: rgba(79, 117, 226, 0.1);
-        }
-        
-        .return-link:hover {
-            background-color: rgba(79, 117, 226, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes gentlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
         }
         
         @keyframes lightMove {
@@ -166,6 +96,115 @@
             }
         }
         
+        /* Card Styles - Smaller for mobile */
+        .card {
+    text-align: center;
+    background-color: rgba(247, 247, 247, 0.95);
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 85%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2),
+                0 0 15px rgba(142, 92, 250, 0.3);
+    margin: 0.5rem;
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+/* Glow Effect */
+.card::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #8a2be2, transparent, #4169e1);
+    border-radius: 0.6rem;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.5;
+    animation: glowPulse 3s infinite alternate;
+}
+
+        
+       
+        
+        /* Logo Styles - Smaller for mobile */
+        .logo {
+            width: 120px;
+            height: auto;
+            margin: 0 auto 1rem;
+            display: block;
+            animation: gentlePulse 4s ease-in-out infinite;
+        }
+        
+        /* Typography - Smaller for mobile */
+        h1 {
+            color: #333;
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+        
+        /* Success Icon - Smaller for mobile */
+        .success-icon {
+            font-size: 2.2rem;
+            color: #4CAF50;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+            animation: successPop 0.5s ease-out;
+        }
+        
+        /* Notification Highlight Box - Compacted for mobile */
+        .notification-highlight {
+            font-weight: 500;
+            color: #555;
+            background-color: rgba(97, 131, 235, 0.1);
+            padding: 0.6rem;
+            border-radius: 5px;
+            border-left: 3px solid #6183eb;
+            text-align: left;
+            margin: 1rem 0;
+            animation: slideIn 0.5s ease-out 0.3s both;
+        }
+        
+        /* Return Link - Smaller for mobile */
+        .return-link {
+            color: #4f75e2;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-top: 0.8rem;
+            transition: all 0.3s ease;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            background-color: rgba(79, 117, 226, 0.1);
+        }
+        
+        .return-link:hover {
+            background-color: rgba(79, 117, 226, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
         @keyframes successPop {
             0% { transform: scale(0.5); opacity: 0; }
             70% { transform: scale(1.2); }
@@ -176,43 +215,116 @@
             from { opacity: 0; transform: translateX(-10px); }
             to { opacity: 1; transform: translateX(0); }
         }
+        
+        /* Tablet and Desktop Adjustments */
+        @media screen and (min-width: 768px) {
+            .card {
+                padding: 2rem;
+                max-width: 420px;
+            }
+            
+            .logo {
+                width: 150px;
+                margin-bottom: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            p {
+                font-size: 1rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .success-icon {
+                font-size: 3rem;
+                margin-bottom: 1.2rem;
+            }
+            
+            .notification-highlight {
+                padding: 0.8rem;
+                margin: 1.5rem 0;
+            }
+            
+            .return-link {
+                font-size: 0.95rem;
+                margin-top: 1rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+        
+        /* Extra Small Devices */
+        @media screen and (max-width: 320px) {
+            .card {
+                padding: 1rem;
+                max-width: 90%;
+            }
+            
+            .logo {
+                width: 100px;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .notification-highlight {
+                padding: 0.5rem;
+            }
+        }
+        
+        /* Large Screens */
+        @media screen and (min-width: 1200px) {
+            .card {
+                max-width: 500px;
+                padding: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body>
- 
-<!-- Light beam animations (subtle) -->
-<div class="light-beam" style="animation-delay: 0s;"></div>
-<div class="light-beam" style="animation-delay: 4s;"></div>
-
-<!-- Enrolled Page -->
-<div class="card">
-    <img src="../images/natraj-logo.png" alt="Nrutyashree Dance Academy" class="logo">
-   
-    <h1>You're Enrolled!</h1>
-    <p>Thank you for your interest in Nrutyashree Dance Academy.</p>
-    <div class="notification-highlight">
-        <p>You will receive a notification once our website is live.</p>
+    <!-- Background container -->
+    <div class="container">
+        <!-- Light beam animations -->
+        <div class="light-beam" style="animation-delay: 0s;"></div>
+        <div class="light-beam" style="animation-delay: 4s;"></div>
     </div>
-    <a href="/" class="return-link">Return to Homepage</a>
-</div>
+    
+    <!-- Enrolled Card -->
+    <div class="card">
+        <img src="../images/natraj-logo.png" alt="Nrutyashree Dance Academy" class="logo">
+       
+        <h1>You're Enrolled!</h1>
+        <p>Thank you for your interest in Nrutyashree Dance Academy.</p>
+        <div class="notification-highlight">
+            <p>You will receive a notification once our website is live.</p>
+        </div>
+        <a href="/" class="return-link">Return to Homepage</a>
+    </div>
     
     <script>
         window.onload = function() {
-                const container = document.querySelector('body');
-                for (let i = 0; i < 20; i++) {
-                    const size = Math.random() * 10 + 5;
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    particle.style.left = `${Math.random() * 100}%`;
-                    particle.style.bottom = '0';
-                    particle.style.opacity = `${Math.random() * 0.6 + 0.2}`;
-                    particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                    particle.style.animationDelay = `${Math.random() * 5}s`;
-                    container.appendChild(particle);
-                }
+            const container = document.querySelector('.container');
+            // Create fewer particles on mobile
+            const isMobile = window.innerWidth < 768;
+            const particleCount = isMobile ? 8 : 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const size = Math.random() * (isMobile ? 8 : 10) + (isMobile ? 3 : 5);
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.bottom = '0';
+                particle.style.opacity = `${Math.random() * 0.6 + 0.2}`;
+                particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(particle);
             }
+        }
     </script>
 </body>
 </html>

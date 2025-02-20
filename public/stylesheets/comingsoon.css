@@ -1,74 +1,253 @@
-
-body,
-html{
-margin: 0;
-padding: 0;
-font-family: Arial, Helvetica, sans-serif;
-height: 100%;
+/* Reset and Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.container{
-height: 100%;
-background: linear-gradient(135deg,#8a2be2, #4169e1 );
-display: flex;
-justify-content: center; 
-align-items: center;
-
+body, html {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
 }
 
-.content{
-text-align: center;
-background-color: #F7F7F7;
-opacity: 0.9;
-padding: 2rem;
-border-radius: 0.5rem;
-max-width: 300px;
-box-shadow: 15px 13px 20px rgba(0, 0, 0, 0.3), -5px -3px 18px #ededed;
+/* Container Styles */
+.container {
+    min-height: 100%;
+    width: 100%;
+    background: linear-gradient(135deg, #8a2be2, #4169e1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    position: relative;
+    overflow: hidden;
 }
 
-.logo{
-width: 150px;
-/* height: 100px; */
-object-fit:scale-down;
+/* Bubble Animation */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(1px);
+    animation: float 15s infinite ease-in-out;
 }
 
-h1{
-color: #333;    
-margin-bottom: 20px;
+@keyframes float {
+    0% {
+        transform: translateY(100vh) translateX(0) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(50vh) translateX(10px) scale(1);
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-20vh) translateX(-10px) scale(0.8);
+        opacity: 0;
+    }
 }
 
-p{
-color:#666;
-margin-bottom: 20px;
+/* Content Card Styles - Smaller for mobile */
+.content {
+    text-align: center;
+    background-color: rgba(247, 247, 247, 0.95);
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 85%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2),
+                0 0 15px rgba(142, 92, 250, 0.3);
+    margin: 0.5rem;
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(5px);
 }
 
-form{
-display: flex;
-flex-direction: column;
+/* Glow Effect */
+.content::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #8a2be2, transparent, #4169e1);
+    border-radius: 0.6rem;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.5;
+    animation: glowPulse 3s infinite alternate;
 }
 
-input[type="email"]{
-padding: 0.5rem;
-border-radius: 5px;
-border: 1px solid #ccc;
-margin-bottom: 1rem;
+@keyframes glowPulse {
+    0% {
+        opacity: 0.3;
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 0.5;
+        filter: blur(15px);
+    }
 }
 
-input:hover{
-border-color: #8a2be2;
+/* Logo Styles - Smaller for mobile */
+.logo {
+    width: 120px;
+    height: auto;
+    object-fit: scale-down;
+    margin: 0 auto 1rem;
+    filter: drop-shadow(0 0 5px rgba(138, 43, 226, 0.3));
 }
 
-button{
-padding: 0.5rem;
-background-color:#6183eb;
-color: #ffffff;
-border: 1px solid #ccc;
-border-radius: 0.4rem;
-transition: background-color 0.9s ease-in-out;
-box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+/* Typography - Smaller for mobile */
+h1 {
+    color: #333;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-button:hover{
-cursor: pointer;
-background-color: #4169e1;
+p {
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Form Styles - Optimized for mobile */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+input[type="email"] {
+    padding: 0.7rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    font-size: 0.9rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+input:hover, input:focus {
+    border-color: #8a2be2;
+    outline: none;
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
+}
+
+button {
+    padding: 0.7rem;
+    background-color: #6183eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.4rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+                0 0 10px rgba(97, 131, 235, 0.3);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+button:hover {
+    background-color: #4169e1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3),
+                0 0 15px rgba(97, 131, 235, 0.4);
+}
+
+/* Tablet and Desktop Adjustments */
+@media screen and (min-width: 768px) {
+    .content {
+        padding: 2rem;
+        max-width: 420px;
+    }
+    
+    .logo {
+        width: 150px;
+        margin-bottom: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    input[type="email"] {
+        padding: 0.75rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    button {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 320px) {
+    .content {
+        padding: 1rem;
+        max-width: 90%;
+    }
+    
+    .logo {
+        width: 100px;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+    }
+    
+    input[type="email"], button {
+        padding: 0.5rem;
+    }
+}
+
+/* Large Screens */
+@media screen and (min-width: 1200px) {
+    .content {
+        max-width: 450px;
+        padding: 2.5rem;
+    }
+}
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: float 15s infinite linear;
 }
