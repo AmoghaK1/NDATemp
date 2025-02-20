@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Emails = require('../models/userMails');
 const session = require('express-session');
 const multer = require('multer')
 const path = require('path')
@@ -7,6 +8,37 @@ const fs = require('fs');
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 require("dotenv").config();
+
+const loadComingsoon = async(req,res)=> {
+    try {
+        res.render('comingsoon');
+    } catch (err){
+        console.log(err.message);
+    }
+}
+
+const enrollUser = async(req,res)=> { 
+    const email = new Emails({
+        email: req.body.email
+    })
+    const emailData = await email.save();
+    if (emailData) {
+        res.render('enrolled', { success: "Email successfully enrolled!" });
+    } else {
+        res.render('comingsoon', {
+            error: "Error occurred while enrolling email"
+        });
+    }
+}
+
+const loadEnrolledPage = async(req,res)=> {
+    try {
+        res.render('enrolledPage');
+    } catch (err){
+        console.log(err.message);
+    }
+}
+
 
 const loadRegister = async(req,res)=> {
     try {
@@ -385,5 +417,8 @@ module.exports = {
     loadProfile,
     updateProfile,
     updateProfilePicture,
-    changePassword
+    changePassword,
+    loadComingsoon,
+    loadEnrolledPage,
+    enrollUser
 };

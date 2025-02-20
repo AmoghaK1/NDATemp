@@ -10,6 +10,11 @@ user_route.use(bodyParser.urlencoded({extended: true}));
 
 const userController = require('../controllers/userController');
 const passport = require('passport');
+
+user_route.get('/', userController.loadComingsoon);
+user_route.post('/enrolled', userController.enrollUser);
+user_route.get('/enrolled', userController.loadEnrolledPage);
+
 user_route.get('/signup',auth.redirectIfAuthenticated, userController.loadRegister);
 user_route.post('/signup', userController.addUser);
 user_route.get('/login',auth.redirectIfAuthenticated, userController.loadLogin);

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrolled - Nrutyashree Dance Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            /* Keeping the original purple gradient */
+            background: linear-gradient(135deg, #8a3dea, #6264ee);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 10;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .logo {
+            width: 100px;
+            margin-bottom: 1.5rem;
+            animation: gentlePulse 4s ease-in-out infinite;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .success-icon {
+            font-size: 52px;
+            color: #4CAF50;
+            margin-bottom: 1.2rem;
+            display: inline-block;
+            animation: successPop 0.5s ease-out;
+        }
+        
+        /* Light animations */
+        .light-beam {
+            position: absolute;
+            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
+            height: 50%;
+            width: 200px;
+            transform: rotate(45deg);
+            filter: blur(5px);
+            z-index: 2;
+            animation: lightMove 8s linear infinite;
+            opacity: 0;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes lightMove {
+            0% { 
+                left: -100px;
+                top: -100px;
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.4;
+            }
+            80% {
+                opacity: 0.4;
+            }
+            100% { 
+                left: 100%;
+                top: 100%;
+                opacity: 0;
+            }
+        }
+        
+        @keyframes successPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .notification-highlight {
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .return-link {
+            color: #4f75e2;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .return-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Light beam animations (subtle) -->
+    <div class="light-beam" style="animation-delay: 0s;"></div>
+    <div class="light-beam" style="animation-delay: 4s;"></div>
+    
+    <!-- Enrolled Page -->
+    <div class="card">
+        <img src="../images/natraj-logo.png" alt="Nrutyashree Dance Academy" class="logo">
+   
+        <h1>You're Enrolled!</h1>
+        <p>Thank you for your interest in Nrutyashree Dance Academy.</p>
+        <p class="notification-highlight">You will receive a notification once our website is live.</p>
+        
+</body>
+</html>
