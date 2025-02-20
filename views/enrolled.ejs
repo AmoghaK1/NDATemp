@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enrolled - Nrutyashree Dance Academy</title>
+    <link rel="icon" type="image/x-icon" href="../images/nda-favicon-v2.png">
     <style>
         * {
             margin: 0;
@@ -13,30 +14,75 @@
         }
         
         body {
-            /* Keeping the original purple gradient */
-            background: linear-gradient(135deg, #8a3dea, #6264ee);
+            background: linear-gradient(135deg, #8a2be2, #4169e1);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            position: relative;
+        }
+        .container {
+            height: 100%;
+            background: linear-gradient(135deg, #8a2be2, #4169e1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: float 15s infinite linear;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Light beam animations */
+        .light-beam {
+            position: absolute;
+            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
+            height: 50%;
+            width: 200px;
+            transform: rotate(45deg);
+            filter: blur(5px);
+            z-index: 2;
+            animation: lightMove 8s linear infinite;
+            opacity: 0;
         }
         
         .card {
-            background-color: #fff;
+            background-color: #F7F7F7;
             border-radius: 8px;
             padding: 2rem;
             width: 90%;
-            max-width: 450px;
+            max-width: 400px;
             text-align: center;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             position: relative;
             z-index: 10;
             animation: fadeIn 0.8s ease-out;
+            opacity: 0.95;
         }
         
         .logo {
-            width: 100px;
+            width: 150px;
             margin-bottom: 1.5rem;
             animation: gentlePulse 4s ease-in-out infinite;
         }
@@ -61,17 +107,33 @@
             animation: successPop 0.5s ease-out;
         }
         
-        /* Light animations */
-        .light-beam {
-            position: absolute;
-            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
-            height: 50%;
-            width: 200px;
-            transform: rotate(45deg);
-            filter: blur(5px);
-            z-index: 2;
-            animation: lightMove 8s linear infinite;
-            opacity: 0;
+        .notification-highlight {
+            font-weight: 500;
+            color: #555;
+            background-color: rgba(97, 131, 235, 0.1);
+            padding: 0.8rem;
+            border-radius: 5px;
+            border-left: 3px solid #6183eb;
+            text-align: left;
+            margin: 1.5rem 0;
+            animation: slideIn 0.5s ease-out 0.3s both;
+        }
+        
+        .return-link {
+            color: #4f75e2;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background-color: rgba(79, 117, 226, 0.1);
+        }
+        
+        .return-link:hover {
+            background-color: rgba(79, 117, 226, 0.2);
+            transform: translateY(-2px);
         }
         
         /* Animations */
@@ -110,36 +172,47 @@
             100% { transform: scale(1); opacity: 1; }
         }
         
-        .notification-highlight {
-            font-weight: 500;
-            color: #555;
-        }
-        
-        .return-link {
-            color: #4f75e2;
-            text-decoration: none;
-            font-size: 14px;
-            display: inline-block;
-            margin-top: 10px;
-        }
-        
-        .return-link:hover {
-            text-decoration: underline;
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
         }
     </style>
 </head>
 <body>
-    <!-- Light beam animations (subtle) -->
-    <div class="light-beam" style="animation-delay: 0s;"></div>
-    <div class="light-beam" style="animation-delay: 4s;"></div>
-    
-    <!-- Enrolled Page -->
-    <div class="card">
-        <img src="../images/natraj-logo.png" alt="Nrutyashree Dance Academy" class="logo">
+ 
+<!-- Light beam animations (subtle) -->
+<div class="light-beam" style="animation-delay: 0s;"></div>
+<div class="light-beam" style="animation-delay: 4s;"></div>
+
+<!-- Enrolled Page -->
+<div class="card">
+    <img src="../images/natraj-logo.png" alt="Nrutyashree Dance Academy" class="logo">
    
-        <h1>You're Enrolled!</h1>
-        <p>Thank you for your interest in Nrutyashree Dance Academy.</p>
-        <p class="notification-highlight">You will receive a notification once our website is live.</p>
-        
+    <h1>You're Enrolled!</h1>
+    <p>Thank you for your interest in Nrutyashree Dance Academy.</p>
+    <div class="notification-highlight">
+        <p>You will receive a notification once our website is live.</p>
+    </div>
+    <a href="/" class="return-link">Return to Homepage</a>
+</div>
+    
+    <script>
+        window.onload = function() {
+                const container = document.querySelector('body');
+                for (let i = 0; i < 20; i++) {
+                    const size = Math.random() * 10 + 5;
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.bottom = '0';
+                    particle.style.opacity = `${Math.random() * 0.6 + 0.2}`;
+                    particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                    particle.style.animationDelay = `${Math.random() * 5}s`;
+                    container.appendChild(particle);
+                }
+            }
+    </script>
 </body>
 </html>
