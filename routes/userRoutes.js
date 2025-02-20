@@ -15,9 +15,9 @@ user_route.get('/', userController.loadComingsoon);
 user_route.post('/enrolled', userController.enrollUser);
 user_route.get('/enrolled', userController.loadEnrolledPage);
 
-user_route.get('/signup',auth.redirectIfAuthenticated, userController.loadRegister);
+user_route.get('/signup',auth.ensureAuthenticated, userController.loadRegister);
 user_route.post('/signup', userController.addUser);
-user_route.get('/login',auth.redirectIfAuthenticated, userController.loadLogin);
+user_route.get('/login',auth.ensureAuthenticated, userController.loadLogin);
 user_route.post('/login', (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
         if (err) {
