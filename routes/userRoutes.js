@@ -45,5 +45,6 @@ user_route.get('/st-profile', auth.ensureAuthenticated, userController.loadProfi
 user_route.put('/api/profile/update', auth.ensureAuthenticated, userController.updateProfile);
 user_route.post('/api/profile/update-picture', auth.ensureAuthenticated, userController.updateProfilePicture);
 user_route.post('/api/profile/change-password', auth.ensureAuthenticated, userController.changePassword);
+user_route.get('/contactus', userController.loadContactUs);
 
 module.exports = user_route;

@@ -406,6 +406,13 @@ const changePassword = async(req, res) => {
     }
 };
 
+const loadContactUs = async(req,res) => {
+    try {
+        res.render('contactus');
+    } catch (err){
+        console.log(err.message);
+    }
+}
 
 
 module.exports = {
@@ -420,5 +427,6 @@ module.exports = {
     changePassword,
     loadComingsoon,
     loadEnrolledPage,
-    enrollUser
+    enrollUser,
+    loadContactUs
 };
